@@ -1,0 +1,194 @@
+\documentclass[11pt]{amsart}
+\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   % ... or a4paper or a5paper or ... 
+%\geometry{landscape}                % Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{epstopdf}
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+
+\title{Brief Article}
+\author{The Author}
+%\date{}                                           % Activate to display a given date or no date
+
+\begin{document}
+\maketitle
+%\section{}
+%\subsection{}
+
+\section{XXX}
+
+This question is about deciding whether a sequence defined by a non-linear recursion is cyclic and, if it is, what the period would be.
+
+For example, consider the sequence is defined recursively by 
+
+$$
+a_{n+1} =
+\frac{1 + a_{n}}{a_{n-1}}
+$$
+
+Say we start it off with $a_{1}=1$, $a_{2}= 2$, then the sequence becomes
+
+$$
+1, 2, 3, 2, 1, 1, 2, \ldots 
+$$
+
+I.e. we get $a_{6} = a_{1}$ and $a_{7} = a_{2}$ so that the sequence is cyclic with period 5.
+
+We can prove that this recursive formula will lead to a cycle by algebraically evaluating expressions for values in the sequence in terms of $a_{1}$ and $a_{2}$.
+This brute force approach works but is a bit tedious and seems unlikely to generalise very well. What if we had another similarly defined  sequence with a period of 100 (evaluating terms would be a lot of work), or that was perhaps not even cyclic (evaluating terms would be pointless)?.
+
+So my question is: Is there a more direct method for determining whether such a non-linear recurrence will cycle and, if it does, what the period will be. I guess I mean a method that uses some property(ies) of the recurrence formula directly without the need to evaluate any terms in the sequence.
+
+\newpage
+
+\section{Expressions}
+
+
+$$
+a_{3}
+=
+\frac{1 + a_{2}}{a_{1}}
+$$
+
+
+$$
+a_{4}
+=
+\frac{1 + a_{3}}{a_{2}} 
+=
+\frac{1 + a_{1} + a_{2}}{a_{1} a_{2}}
+$$
+
+
+
+$$
+a_{5}
+=
+\frac{1 + a_{4}}{a_{3}}
+=
+\frac{1 + a_{1}}
+{a_{2}}
+$$
+
+$$
+a_{6}
+=
+\frac{1 + a_{5}}{a_{4}} 
+=
+a_{1}
+$$
+
+
+
+$$
+a_{7}
+=
+\frac{1 + a_{6}}{a_{5}} 
+=
+a_{2}
+$$
+
+
+\section{Working out}
+
+
+$$
+\begin{aligned}
+a_{3}
+=&
+\frac{1 + a_{2}}{a_{1}}
+\end{aligned}
+$$
+
+$$
+\begin{aligned}
+a_{4}
+=&
+\frac{1 + a_{3}}{a_{2}} 
+\\
+=&
+\frac{1 + (\frac{1 + a_{2}}{a_{1}})}{a_{2}} 
+\\
+=&
+\frac{1 + a_{1} + a_{2}}{a_{1} a_{2}}
+\end{aligned}
+$$
+
+$$
+\begin{aligned}
+a_{5}
+=&
+\frac{1 + a_{4}}{a_{3}}
+\\
+=&
+\frac{1 + (\frac{1 + a_{1} + a_{2}}{a_{1} a_{2}})}
+{(\frac{1 + a_{2}}{a_{1}})}
+\\
+=&
+\frac{1 + a_{1} + a_{2} + a_{1}a_{2}}{a_{1}a_{2}}
+\frac{a_{1}}{1 + a_{2}}
+\\=&
+\frac{1 + a_{1} + a_{2} + a_{1}a_{2}}
+{a_{2} (1+a_{2})}
+\\=&
+\frac{1 + a_{1}}
+{a_{2}}
+\end{aligned}
+$$
+
+$$
+\begin{aligned}
+a_{6}
+=&
+\frac{1 + a_{5}}{a_{4}} 
+\\
+=&
+\left(
+1 + 
+\frac{1 + a_{1}}
+{a_{2}}
+\right)
+\left(
+\frac{a_{1} a_{2}}{1 + a_{1} + a_{2}}
+\right)
+\\
+=&
+\left(
+\frac{1 + a_{1} + a_{2}}{ a_{2} }
+\right)
+\left(
+\frac{a_{1} a_{2}}{1 + a_{1} + a_{2}}
+\right)
+\\
+=&
+a_{1}
+\end{aligned}
+$$
+
+
+
+$$
+\begin{aligned}
+a_{7}
+=&
+\frac{1 + a_{6}}{a_{5}} 
+\\
+=&
+\frac{1 + a_{1}}{(\frac{1 + a_{1}}
+{a_{2}})}
+\\
+=&
+a_{2}
+\end{aligned}
+$$
+
+
+
+\end{document}  
+
+
+
+
+
