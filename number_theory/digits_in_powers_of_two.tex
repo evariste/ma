@@ -1,0 +1,133 @@
+\documentclass[11pt]{amsart}
+\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   % ... or a4paper or a5paper or ... 
+%\geometry{landscape}                % Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{epstopdf}
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+\usepackage{hyperref}
+
+\title{Brief Article}
+\author{The Author}
+%\date{}                                           % Activate to display a given date or no date
+
+\begin{document}
+\maketitle
+%\section{}
+%\subsection{}
+
+
+
+An ex-colleague of mine who is also fond of brainteasers shared the following excellent problem with me the other day:
+
+Let  $f(n)$  denote the number of digits of  $n$  (in base 10) that are greater than or equal to 5 (so  $f(128)=1$, $f(1024)=0$ and  $f(1048576)=4$ ).
+
+What is the sum of  $f(2^{k})/2^{k}$  (from  $k=0$  to $\infty$ )?
+
+\vspace{2em}
+
+\href{http://fine-disregard.blogspot.co.uk/2017/10/digits-in-powers-of-2.html}{Original link here.}
+
+\vspace{2em}
+
+
+When we double a number, some digits are simply doubled but others carry.
+
+E.g. doubling $2875632$ gives $5751264$. 
+
+Consider the digit sum before and after doubling in this case, we have 
+
+$2875632 \rightarrow 2+8+7+5+6+3+2 = 33$ 
+
+and 
+
+$5751264 \rightarrow 5+7+5+1+2+6+4 = 30$.
+
+Let the number that is to be doubled be called $n$. In $n$, a  digit $d$ that is less than 5 contributes $2d$ to the digit sum in $2n$. A digit that is greater than 5 contributes $2n - 10$ in its column and it contributes 1 via carrying. I.e. it will contribute $2n-9$ altogether to the digit sum of $2n$.
+
+We can represent $n$ by $d_k d_{k-1} \ldots d_{1} d_{0}$, i.e. it has $k$ digits.
+
+Let $F_{n} = \{d_{i} : d_{i} > 5 , d_{i}  \textrm{ a digit of } n\}$ be the set of digits greater than 5. Let  $f(n) = |F_{n}|$
+
+Let the digit sum of $n$ be $s(n)$.  We can obtain the digit sum  of $2n$ by 
+%
+$$
+s(2n) = \sum_{i \notin F} 2 d_{i} + \sum_{i \in F} (2 d_{i} - 9)
+$$
+so that
+$$
+s(2n) = \sum_{i \notin F} 2 d_{i} + \sum_{i \in F} 2 d_{i} - \sum_{i \in F} 9
+$$
+to give
+$$
+s(2n) = \sum 2 d_{i} - 9 |F|
+= 2 s(n) - 9 f(n)
+$$
+
+We can therefore write 
+$$
+f(n) = \frac{2 s(n) - s(2n)}{9}
+$$
+
+
+If we have a sequence of numbers $n_{0}, n_{1}, \ldots $ where each term is double the previous one, i.e. $n_{i} = 2 n_{i-1}$.
+
+For $n_{0} = 1$, the sequence is the powers of two.
+
+The question asks to find the sum
+%
+$$
+\sum_{i=0}^{\infty} \frac{f(n_{i})}{2^{i}} = 
+\sum_{i=0}^{\infty} \frac{f(2^{i})}{2^{i}} 
+$$
+
+Using the above relation between $f(n)$ and $s(n)$
+$$
+\sum \frac{f(2^{i})}{2^{i}} 
+=
+\sum \frac{1}{9 \, \cdot \, 2^{i}} \left[
+2 s(2^{i}) - s(2^{i+1})
+\right]
+$$
+
+Separating out
+$$
+\sum_{i=0}^{\infty} \frac{f(2^{i})}{2^{i}} =
+%
+\frac{1}{9}
+\sum_{i=0}^{\infty} \frac{2 s(2^{i})}{2^{i}}
+-
+\sum_{i=0}^{\infty} \frac{ s(2^{i+1})}{2^{i}} 
+$$
+which can be written as
+$$
+\sum_{i=0}^{\infty} \frac{f(2^{i})}{2^{i}} =
+%
+\frac{1}{9}
+\sum_{i=0}^{\infty} \frac{ s(2^{i})}{2^{i-1}}
+-
+\sum_{i=1}^{\infty} \frac{ s(2^{i})}{2^{i-1}} 
+$$
+In the above, most terms cancel out to leave
+$$
+\sum_{i=0}^{\infty} \frac{f(2^{i})}{2^{i}} =
+%
+\frac{1}{9}
+\frac{ s(2^{0})}{2^{-1}}
+=
+\frac{1}{9}
+\, 2 \, s(1)
+=
+\frac{2}{9}
+$$
+
+!!
+
+
+
+
+
+
+\end{document}  
