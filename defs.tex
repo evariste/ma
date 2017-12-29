@@ -1,0 +1,261 @@
+
+\def\0{{\bf 0}}
+\def\A{{\bf A}}
+\def\A{{\bf A}}
+\def\B{{\bf B}}
+\def\C{{\bf C}}
+\def\D{{\bf D}}
+\def\E{{\bf E}}
+\def\F{{\bf F}}
+\def\G{{\bf G}}
+\def\H{{\bf H}}
+\def\I{{\bf I}}
+\def\J{{\bf J}}
+\def\K{{\bf K}}
+\def\K{{\bf K}}
+\def\L{{\bf L}}
+\def\M{{\bf M}}
+\def\N{{\bf N}}
+\def\P{{\bf P}}
+\def\Q{{\bf Q}}
+\def\S{{\bf S}}
+\def\R{{\bf R}}
+\def\T{{\bf T}}
+\def\U{{\bf U}}
+\def\V{{\bf V}}
+\def\W{{\bf W}}
+\def\W{{\bf W}}
+\def\X{{\bf X}}
+\def\Y{{\bf Y}}
+\def\Z{{\bf Z}}
+
+\def\a{{\bf a}}
+\def\b{{\bf b}}
+\def\c{{\bf c}}
+\def\d{{\bf d}}
+\def\e{{\bf e}}
+\def\f{{\bf f}}
+\def\g{{\bf g}}
+\def\h{{\bf h}}
+\def\k{{\bf k}}
+\def\n{{\bf n}}
+\def\l{{\bf l}}
+\def\p{{\bf p}}
+\def\q{{\bf q}}
+\def\s{{\bf s}}
+\def\t{{\bf t}}
+\def\u{{\bf u}}
+\def\v{{\bf v}}
+\def\w{{\bf w}}
+\def\x{{\bf x}}
+\def\y{{\bf y}}
+\def\z{{\bf z}}
+
+\def\cA{{\cal A}}
+\def\cB{{\cal B}}
+\def\cC{{\cal C}}
+\def\cD{{\cal D}}
+\def\cE{{\cal E}}
+\def\cF{{\cal F}}
+\def\cG{{\cal G}}
+\def\cH{{\cal H}}
+\def\cI{{\cal I}}
+\def\cM{{\cal M}}
+\def\cN{{\cal N}}
+\def\cO{{\cal O}}
+\def\cP{{\cal P}}
+\def\cQ{{\cal Q}}
+\def\cR{{\cal R}}
+\def\cS{{\cal S}}
+\def\cT{{\cal T}}
+\def\cV{{\cal V}}
+
+\def\basis{\theta}
+\def\Basis{\Theta}
+
+\def\seg{\pi}
+
+\newenvironment{algo}{\begin{list}{}{\itemsep0mm \parsep0mm \topsep0mm \itemindent0mm \labelwidth0mm \labelsep0mm \partopsep0mm \leftmargin5mm}}{\end{list}}
+
+\newcommand{\vecTwoD}[2]
+{
+    \ensuremath{
+      \begin{pmatrix} #1 \\ #2 \end{pmatrix}
+    }
+}
+
+\newcommand{\vecThreeD}[3]
+{
+    \ensuremath{
+        \begin{pmatrix} #1 \\ #2 \\ #3 \end{pmatrix}
+    }
+}
+
+\newcommand{\vecThreeDR}[3]
+{
+    \ensuremath{
+    	\left(
+        \begin{array}{r} #1 \\ #2 \\ #3 \end{array}
+    \right)
+    }
+}
+
+\newcommand{\vecFourD}[4]
+{
+    \ensuremath{
+       \begin{pmatrix} #1 \\ #2 \\ #3 \\ #4 \end{pmatrix}
+    }
+}
+
+\newcommand{\PDeriv}[2]
+{
+ \ensuremath{
+  \frac{\partial {#1}}{\partial {#2}}
+ }
+}
+
+\newcommand{\PPDeriv}[2]
+{
+ \ensuremath{
+  \frac{\partial^{2} {#1}}{\partial {#2}^{2}}
+ }
+}
+
+\newcommand{\PPDerivTwoVars}[3]
+{
+ \ensuremath{
+  \frac{\partial^{2} {#1}}{\partial {#2} \partial {#3}}
+ }
+}
+
+\newcommand{\DDeriv}[2]
+{
+ \ensuremath{
+  \frac{d {#1}}{d {#2}}
+ }
+}
+
+\newcommand{\DDDeriv}[2]
+{
+ \ensuremath{
+  \frac{d^2 {#1}}{d {#2}^2}
+ }
+}
+
+
+\newcommand{\PDerivAt}[3]
+{
+ \ensuremath{
+  \left.
+   \frac{\partial {#1}}{\partial {#2}}
+  \right \vert_{#3}
+ }
+}
+
+\newcommand{\PPDerivAt}[3]
+{
+ \ensuremath{
+  \left.
+  \frac{\partial^{2} {#1}}{\partial {#2}^{2}}
+  \right \vert_{#3}
+ }
+}
+
+
+
+\newcommand{\DDerivAt}[3]
+{
+ \ensuremath{
+  \left.
+   \frac{d {#1}}{d {#2}}
+  \right \vert_{#3}
+ }
+}
+
+\DeclareRobustCommand\sfrac[1]{\@ifnextchar/{\@sfrac{#1}}%
+                                            {\@sfrac{#1}/}}
+\def\@sfrac#1/#2{\leavevmode\kern.1em\raise.5ex
+         \hbox{$\m@th\mbox{\fontsize\sf@size\z@
+                           \selectfont#1}$}\kern-.1em
+         /\kern-.15em\lower.25ex
+          \hbox{$\m@th\mbox{\fontsize\sf@size\z@
+                            \selectfont#2}$}
+}
+
+\newcommand{\Matrix}[1]{\mathcal{#1}}
+
+\newcommand{\Vector}[1]{\mathbf{#1}}
+
+%\newcommand{\uvect}[1]{\textbf{\em #1}}
+\newcommand{\uvect}[1]{\boldsymbol{#1}}
+
+\newcommand{\nth}[1]
+{
+ \ensuremath
+ {
+  {#1}^{\textrm{th}}
+ }
+}
+
+\newcommand{\floor}[1]
+{
+ \ensuremath
+ {
+  \left\lfloor {#1} \right\rfloor
+ }
+}
+
+
+\newcommand{\argmax}{\operatornamewithlimits{argmax}}
+\newcommand{\argmin}{\operatornamewithlimits{argmin}}
+
+\newcommand{\Exp}{\operatorname{Exp}}
+
+\newcommand{\grad}{\operatorname{grad}}
+\newcommand{\divergence}{\operatorname{div}}
+\newcommand{\curl}{\operatorname{curl}}
+
+
+% \renewcommand{\vec}[1]{\overrightarrow{\mathbf{#1}}}
+% \newcommand{\uvec}[1]{\hat{\mathbf{#1}}}
+\newcommand{\uvec}[1]{\hat{#1}}
+
+\newcommand{\QED}{\hfill\ensuremath{\square}}%
+
+
+
+\newcommand*{\mathcolor}{}
+\def\mathcolor#1#{\mathcoloraux{#1}}
+\newcommand*{\mathcoloraux}[3]{%
+  \protect\leavevmode
+  \begingroup
+    \color#1{#2}#3%
+  \endgroup
+}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Some commands for collaborative editing.
+
+\usepackage{xcolor}
+\usepackage[normalem]{ulem}     % for strikethrough
+% \sout{text goes here} will strike through text horizontally.
+\definecolor{delColor}{RGB}{200,10,10}
+\newcommand{\deltext}[1]
+{
+\color{delColor}
+\sout{#1}
+\color{black}
+}
+%
+\definecolor{addColor}{RGB}{10,200,10}
+\newcommand{\addtext}[1]
+{
+\color{addColor}
+{#1}
+\color{black}
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+

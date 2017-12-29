@@ -1,0 +1,110 @@
+\documentclass[11pt]{amsart}
+\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   % ... or a4paper or a5paper or ... 
+%\geometry{landscape}                % Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{epstopdf}
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+
+\input{../defs}
+
+\title{Brief Article}
+\author{The Author}
+%\date{}                                           % Activate to display a given date or no date
+
+\begin{document}
+\maketitle
+%\section{}
+%\subsection{}
+
+From Wikipedia:
+
+\begin{quotation}
+In mathematics, Hermite's identity, named after Charles Hermite, gives the value of a summation involving the floor function. It states that for every real number $x$ and for every positive integer $n$ the following identity holds:
+
+$$
+\sum_{k=0}^{n-1}\floor{x+\frac{k}{n}}=\floor{ nx }
+$$
+\end{quotation}
+
+Where does this come from?
+
+Outline
+
+We have $x = \floor{x} + \{x\}$, where $\{x\}$ is fractional part of $x$.
+
+Picture a number line.
+
+The interval $[ \floor{ x } , 1 + \floor{ x } )$ is mapped under multiplication by $n$ to $[ n \floor{ x } , n \floor{ x } + n )$.
+
+There are $n$ integers in the interval 
+$[ n \floor{ x } , n \floor{ x } + n )$, 
+these are
+$ n \floor{ x } , n \floor{ x } + 1, \ldots n \floor{ x } + n-1 $. 
+
+
+These integers map to points in the small interval  $[ \, \floor{ x } , 1 + \floor{ x } \, )$ that are separated by a gap of $\frac{1}{n}$.
+
+These points are at 
+
+$$
+\floor{x} , \floor{x} + \frac{1}{n}, \floor{x} + \frac{2}{n}, \ldots , \floor{x} + \frac{n-1}{n}
+$$
+
+The last of these points that is less than or equal to $x$ will correspond to $\floor{nx}$ in the larger interval.
+
+Let $k$ be the integer with $0 \le k \le n-1$ such that
+
+$$
+\floor{x} + \frac{k}{n} \le x < \floor{x} + \frac{k+1}{n}
+$$
+
+So that $\floor{nx} = n \floor{x} + k$.
+
+
+So we can write as a summation:
+
+$$
+\begin{aligned}
+\floor{nx} &= 
+n \floor{x} + \sum_{j=0}^{k} 1 
+\\
+&=
+\sum_{j=0}^{k} \floor{x} + 1 \; + \; 
+\sum_{j=k+1}^{n-1} \floor{x}
+\end{aligned}
+$$
+
+The points in the small interval on or to the left of $x$ can be shifted by one unit to the right, this means that the two summations above can be combined into a single summation in Hermite's identity.
+
+$\floor{x + \frac{j}{n}}$ will contribute 
+$\floor{x}$ for 
+$0 \le j < n-k$. CHECK
+
+It will contribute $\floor{x} + 1$ for 
+$n-k \le j \le n-1$. 
+
+Which provides the same value as the separate summations above.
+
+TODO: Illustrate with pictures.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}  
