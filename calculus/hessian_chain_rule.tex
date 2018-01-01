@@ -1,0 +1,402 @@
+\documentclass[11pt]{amsart}
+\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   % ... or a4paper or a5paper or ... 
+%\geometry{landscape}                % Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{epstopdf}
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+
+\title{Multivariate Hessian Chain rule}
+\author{The Author}
+%\date{}                                           % Activate to display a given date or no date
+
+\begin{document}
+\maketitle
+%\section{}
+%\subsection{}
+Depending on how the tensors are combined, I think your expression might make sense now.
+
+I've used $x$, $y$ and $z$ for $C$, $B$ and $A$ respectively in the work below, hope it makes sense:
+
+Let $x\in \mathbb{R}^m$ and $y \in \mathbb{R}^n$. Let $y$ depend on $x$ so we can find the Jacobian of $y$ as a function of $x$.
+
+$$
+J_x y \in \mathbb{R}^{n \times m} \qquad
+\left. J_{x} y \right|_{i,j}
+= \frac{\partial y_{i}}{\partial x_{j}}
+$$
+
+where $J|_{i,j}$ denotes the $(i,j)$ element of the Jacobian.
+
+Let $z \in \mathbb{R}^{k}$ be a function of $y$. We can also find the Jacobian of $z$ as a function of $y$.
+
+$$
+J_y z \in \mathbb{R}^{k \times n} \qquad
+\left.
+J_{y} z \right|_{t,i}
+= \frac{\partial z_{t}}{\partial y_{i}}
+$$
+
+We can view $z$ as a function of $x$ by composition
+
+$$
+x \rightarrow y \rightarrow z \qquad \qquad
+\mathbb{R}^{m} \rightarrow
+\mathbb{R}^{n} \rightarrow
+\mathbb{R}^{k}
+$$
+
+The Jacobian of $z$ as a function of $x$:
+
+
+$$
+J_x z \in \mathbb{R}^{k \times m} \qquad
+\left.
+J_{x} z \right|_{t,j}
+= \frac{\partial z_{t}}{\partial x_{j}}
+$$
+
+The term
+
+$$
+\frac{\partial z_{t}}{\partial x_{j}}
+$$
+
+Can be written as a sum
+
+$$
+\frac{\partial z_{t}}{\partial x_{j}}
+=
+\sum_{i=1}^{n}
+\frac{\partial z_{t}}{\partial y_{i}}
+\frac{\partial y_{i}}{\partial x_{j}}
+$$
+
+Let's drop the summation and use Einstein notation, i.e. we assume summation over indices that are repeated, so we can write
+
+$$
+\frac{\partial z_{t}}{\partial x_{j}}
+=
+\frac{\partial z_{t}}{\partial y_{i}}
+\frac{\partial y_{i}}{\partial x_{j}}
+$$
+
+This basically represents matrix multiplication.
+The Jacobians are matrices (2-tensors) and we have
+
+$$
+J_{x} z = J_{y} z \; \; J_{x} y
+$$
+
+
+What about the Hessian? - is there a chain rule for Hessians?
+
+
+The Hessian of $y$ as a function of $x$ is
+
+$$
+H_{x} y = \nabla_{x} J_{x} y
+$$
+
+It is a 3-tensor
+$$
+\left.
+H_{x} y \right\vert_{q,i,j} = 
+\frac{\partial}{\partial x_{q}}
+J_{x} y \vert_{i,j}
+$$
+
+
+$$
+\left.
+H_{x} y \right\vert_{q,i,j} = 
+\frac{\partial}{\partial x_{q}}
+\frac{\partial y_{i}}{\partial x_{j}}
+=
+\frac{\partial^{2} y_{i}}{\partial x_{q} \, x_{j}}
+$$
+
+
+The Hessian of $z$ as a function of $y$ is
+
+$$
+\left.
+H_{y} z \right\vert_{r,t,i} = 
+\frac{\partial}{\partial y_{r}}
+\frac{\partial z_{t}}{\partial y_{i}}
+=
+\frac{\partial^{2} z_{t}}{\partial y_{r} \, y_{i}}
+$$
+
+What about the Hessian of $z$ as a function $x$?
+
+
+
+
+$$
+\left.
+H_{x} z \right\vert_{s,t,j} = 
+\frac{\partial}{\partial x_{s}}
+\frac{\partial z_{t}}{\partial x_{j}}
+=
+\frac{\partial^{2} z_{t}}{\partial x_{s} \, x_{j}}
+$$
+
+We can use the expression derived earlier for $\partial z_{t}/\partial x_{j}$ which is an element in the Jacobian of $z$ with respect to $x$:
+
+$$
+\left.
+H_{x} z \right\vert_{s,t,j} = 
+\frac{\partial}{\partial x_{s}}
+\left[
+\frac{\partial z_{t}}{\partial y_{i}}
+\frac{\partial y_{i}}{\partial x_{j}}
+\right]
+$$
+
+Remembering that we are using the convention where repeated indices denote indices over which we should sum. The evaluates with the product rule to the following
+
+$$
+\begin{aligned}
+\left.
+H_{x} z \right\vert_{s,t,j} &
+= 
+\frac{\partial}{\partial x_{s}}
+\left[
+\frac{\partial z_{t}}{\partial y_{i}}
+\frac{\partial y_{i}}{\partial x_{j}}
+\right]
+\\
+&=
+\frac{\partial z_{t}}{\partial y_{i}}
+\;
+\frac{\partial}{\partial x_{s}}
+\frac{\partial y_{i}}{\partial x_{j}}
++
+\frac{\partial}{\partial x_{s}}
+\frac{\partial z_{t}}{\partial y_{i}}
+\;
+\frac{\partial y_{i}}{\partial x_{j}}
+\\
+&=
+\frac{\partial z_{t}}{\partial y_{i}}
+\,
+\frac{\partial^{2} y_{i}}{\partial x_{s} x_{j}}
++
+\frac{\partial}{\partial x_{s}}
+\frac{\partial z_{t}}{\partial y_{i}}
+\,
+\frac{\partial y_{i}}{\partial x_{j}}
+\end{aligned}
+$$
+
+The first part of the second term contains components of all three variables, let's focus on it
+
+$$
+\frac{\partial}{\partial x_{s}}
+\frac{\partial z_{t}}{\partial y_{i}}
+$$
+
+Assuming equality of mixed partials, we can write it as
+
+$$
+\frac{\partial}{\partial y_{i} }
+\frac{\partial z_{t}}{\partial x_{s}}
+$$
+
+Repeating the substitution made earlier,
+
+$$
+\begin{aligned}
+\frac{\partial}{\partial y_{i} }
+\frac{\partial z_{t}}{\partial x_{s}}
+&=
+\frac{\partial}{\partial y_{i} }
+\left[
+\frac{\partial z_{t}}{\partial y_{u}}
+\frac{\partial y_{u}}{\partial x_{s}}
+\right]
+\\
+&=
+\frac{\partial}{\partial y_{i} }
+\frac{\partial z_{t}}{\partial y_{u}}
+\;
+\frac{\partial y_{u}}{\partial x_{s}}
++
+\frac{\partial z_{t}}{\partial y_{u}}
+\;
+\frac{\partial}{\partial y_{i} }
+\frac{\partial y_{u}}{\partial x_{s}}
+\\
+&= 
+\frac{\partial^{2} z_{t}}{\partial y_{i} y_{u}}
+\;
+\frac{\partial y_{u}}{\partial x_{s}}
++
+\frac{\partial z_{t}}{\partial y_{u}}
+\;
+\frac{\partial}{\partial y_{i} }
+\frac{\partial y_{u}}{\partial x_{s}}
+\\
+&= 
+\frac{\partial^{2} z_{t}}{\partial y_{i} y_{u}}
+\;
+\frac{\partial y_{u}}{\partial x_{s}}
++
+\frac{\partial z_{t}}{\partial y_{u}}
+\;
+\frac{\partial}{\partial x_{s} }
+\frac{\partial y_{u}}{\partial y_{i} }
+\\
+&= 
+\frac{\partial^{2} z_{t}}{\partial y_{i} y_{u}}
+\;
+\frac{\partial y_{u}}{\partial x_{s}}
++
+\frac{\partial z_{t}}{\partial y_{y}}
+\;
+\frac{\partial}{\partial x_{s} }
+\delta_{i,u}
+\\
+&=
+\frac{\partial^{2} z_{t}}{\partial y_{i} y_{u}}
+\;
+\frac{\partial y_{u}}{\partial x_{s}}
++
+\frac{\partial z_{t}}{\partial y_{u}}
+\;
+0
+\\
+&=
+\frac{\partial^{2} z_{t}}{\partial y_{i} y_{u}}
+\;
+\frac{\partial y_{u}}{\partial x_{s}}
+\end{aligned}
+$$
+
+Now replace this expression into the second term of the earlier equation for the Hessian of $z$ with respect to $x$
+
+$$
+\begin{aligned}
+\left.
+H_{x} z \right\vert_{s,t,j} 
+&= 
+\frac{\partial z_{t}}{\partial y_{i}}
+\,
+\frac{\partial^{2} y_{i}}{\partial x_{s} x_{j}}
++
+\frac{\partial}{\partial x_{s}}
+\frac{\partial z_{t}}{\partial y_{i}}
+\,
+\frac{\partial y_{i}}{\partial x_{j}}
+\\
+&= 
+\frac{\partial z_{t}}{\partial y_{i}}
+\,
+\frac{\partial^{2} y_{i}}{\partial x_{s} x_{j}}
++
+\frac{\partial^{2} z_{t}}{\partial y_{i} y_{u}}
+\;
+\frac{\partial y_{u}}{\partial x_{s}}
+\,
+\frac{\partial y_{i}}{\partial x_{j}}
+\end{aligned}
+$$
+
+Now we can replace the partial derivative notation with the Jacobian/Hessian notation to get an expression for the Hessian of $z$ as a function of $x$ in terms of the intermediate Jacobians/Hessians:
+
+
+$$
+\begin{aligned}
+\left.
+H_{x} z \right\vert_{s,t,j} 
+&= 
+\frac{\partial z_{t}}{\partial y_{i}}
+\,
+\frac{\partial^{2} y_{i}}{\partial x_{s} x_{j}}
++
+\frac{\partial^{2} z_{t}}{\partial y_{i} y_{u}}
+\;
+\frac{\partial y_{u}}{\partial x_{s}}
+\,
+\frac{\partial y_{i}}{\partial x_{j}}
+\\
+&= 
+\left.
+J_{y} z \right|_{t,i}
+\,
+\left.
+H_{x} y \right|_{s,i,j}
++
+\left.
+H_{y} z \right|_{i,t,u}
+\;
+\left.
+J_{x} y \right|_{{u,s}}
+\,
+\left.
+J_{x} y \right|_{i,j}
+\end{aligned}
+$$
+
+So for the first term:
+
+$$
+\left.
+J_{y} z \right|_{t,i}
+\,
+\left.
+H_{x} y \right|_{s,i,j}
+$$
+we evaluate the tensor product along the second dimension of the Jacobian of $z$ and the second dimension of the Hessian of $y$. This is because the shared index $i$ appears second for $J_{y} z$ and second for $H_{x} y$. The Numpy tensordot function accepts an argument to set which dimensions to carry out the product on.
+
+For the second term
+$$
+\left.
+H_{y} z \right|_{i,t,u}
+\;
+\left.
+J_{x} y \right|_{{u,s}}
+\,
+\left.
+J_{x} y \right|_{i,j}
+$$
+There are two tensor products and the shared indices indicate over which dimensions to take the products.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}  
