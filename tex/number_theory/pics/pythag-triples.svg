@@ -14,10 +14,21 @@
    viewBox="0 0 297 210"
    version="1.1"
    id="svg8"
-   inkscape:version="0.92.2 (5c3e80d, 2017-08-06)"
-   sodipodi:docname="pythag_triples.svg">
+   inkscape:version="0.47 r22583"
+   sodipodi:docname="pythag-triples.svg"
+   inkscape:export-filename="/Users/paulaljabar/maths/tex/number_theory/pics/pythag-triples.png"
+   inkscape:export-xdpi="144"
+   inkscape:export-ydpi="144">
   <defs
-     id="defs2" />
+     id="defs2">
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 372.04724 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="1052.3622 : 372.04724 : 1"
+       inkscape:persp3d-origin="526.18109 : 248.03149 : 1"
+       id="perspective2922" />
+  </defs>
   <sodipodi:namedview
      id="base"
      pagecolor="#ffffff"
@@ -34,8 +45,8 @@
      inkscape:snap-text-baseline="true"
      inkscape:window-width="1363"
      inkscape:window-height="737"
-     inkscape:window-x="168"
-     inkscape:window-y="166"
+     inkscape:window-x="37"
+     inkscape:window-y="0"
      inkscape:window-maximized="0" />
   <metadata
      id="metadata5">
@@ -54,6 +65,14 @@
      inkscape:groupmode="layer"
      id="layer1"
      transform="translate(0,-87)">
+    <rect
+       style="fill:#ffffff;stroke:none;stroke-width:2.40000010000000019;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       id="rect2924"
+       width="451.44833"
+       height="395.75562"
+       x="270.86899"
+       y="123.88042"
+       transform="matrix(0.28222223,0,0,0.28222223,0,86.999999)" />
     <path
        style="fill:none;stroke:#000000;stroke-width:0.25095668px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        d="M 83.342186,189.41198 H 197.42958"
@@ -69,7 +88,8 @@
        id="path4508"
        cx="133.76837"
        cy="188.87161"
-       r="39.560417" />
+       r="39.560417"
+       d="m 173.32879,188.87161 c 0,21.84862 -17.7118,39.56042 -39.56042,39.56042 -21.84861,0 -39.560416,-17.7118 -39.560416,-39.56042 0,-21.84861 17.711806,-39.56041 39.560416,-39.56041 21.84862,0 39.56042,17.7118 39.56042,39.56041 z" />
     <path
        style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        d="m 111.2852,132.10564 88.36268,68.02817"
@@ -124,12 +144,14 @@
        id="path4562"
        cx="172.05984"
        cy="178.5493"
-       r="1.3480742" />
+       r="1.3480742"
+       d="m 173.40792,178.5493 c 0,0.74452 -0.60355,1.34808 -1.34808,1.34808 -0.74452,0 -1.34807,-0.60356 -1.34807,-1.34808 0,-0.74452 0.60355,-1.34807 1.34807,-1.34807 0.74453,0 1.34808,0.60355 1.34808,1.34807 z" />
     <circle
        r="1.3480742"
        cy="149.44507"
        cx="133.95982"
        id="circle4564"
-       style="fill:#000000;stroke:#000000;stroke-width:0.30385166;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none" />
+       style="fill:#000000;stroke:#000000;stroke-width:0.30385166;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none"
+       d="m 135.3079,149.44507 c 0,0.74452 -0.60356,1.34807 -1.34808,1.34807 -0.74452,0 -1.34807,-0.60355 -1.34807,-1.34807 0,-0.74452 0.60355,-1.34808 1.34807,-1.34808 0.74452,0 1.34808,0.60356 1.34808,1.34808 z" />
   </g>
 </svg>
