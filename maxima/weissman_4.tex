@@ -1,0 +1,231 @@
+\documentclass{article}
+
+%% Created with wxMaxima 16.04.0
+
+\setlength{\parskip}{\medskipamount}
+\setlength{\parindent}{0pt}
+\usepackage[utf8]{inputenc}
+\DeclareUnicodeCharacter{00B5}{\ensuremath{\mu}}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{amsmath}
+\usepackage{ifthen}
+\newsavebox{\picturebox}
+\newlength{\pictureboxwidth}
+\newlength{\pictureboxheight}
+\newcommand{\includeimage}[1]{
+    \savebox{\picturebox}{\includegraphics{#1}}
+    \settoheight{\pictureboxheight}{\usebox{\picturebox}}
+    \settowidth{\pictureboxwidth}{\usebox{\picturebox}}
+    \ifthenelse{\lengthtest{\pictureboxwidth > .95\linewidth}}
+    {
+        \includegraphics[width=.95\linewidth,height=.80\textheight,keepaspectratio]{#1}
+    }
+    {
+        \ifthenelse{\lengthtest{\pictureboxheight>.80\textheight}}
+        {
+            \includegraphics[width=.95\linewidth,height=.80\textheight,keepaspectratio]{#1}
+            
+        }
+        {
+            \includegraphics{#1}
+        }
+    }
+}
+\newlength{\thislabelwidth}
+\DeclareMathOperator{\abs}{abs}
+\usepackage{animate} % This package is required because the wxMaxima configuration option
+                      % "Export animations to TeX" was enabled when this file was generated.
+
+\definecolor{labelcolor}{RGB}{100,0,0}
+
+\begin{document}
+Find forms for \$(x,y,z)\$ that satisfy \$2 x\^{}2 + 3 y\^{}2 = 5\$ in terms of parameters \$(a,b)\$. Generalisation of pythagorean triples. 
+
+
+\noindent
+%%%%%%%%%%%%%%%
+%%% INPUT:
+\begin{minipage}[t]{8ex}\color{red}\bf
+(\%{}i1) 
+\end{minipage}
+\begin{minipage}[t]{\textwidth}\color{blue}
+ya : 1 + m*(x-1);
+\end{minipage}
+%%% OUTPUT:
+\[\displaystyle
+\tag{ya}\label{ya}
+m\,\left( x-1\right) +1\mbox{}
+\]
+%%%%%%%%%%%%%%%
+
+
+\noindent
+%%%%%%%%%%%%%%%
+%%% INPUT:
+\begin{minipage}[t]{8ex}\color{red}\bf
+(\%{}i2) 
+\end{minipage}
+\begin{minipage}[t]{\textwidth}\color{blue}
+crossings: solve([3*ya\^{}2 + 2*x\^{}2 = 5], [x]);
+\end{minipage}
+%%% OUTPUT:
+\[\displaystyle
+\tag{crossings}\label{crossings}
+[x=\frac{3{{m}^{2}}-6m-2}{3{{m}^{2}}+2},x=1]\mbox{}
+\]
+%%%%%%%%%%%%%%%
+
+
+\noindent
+%%%%%%%%%%%%%%%
+%%% INPUT:
+\begin{minipage}[t]{8ex}\color{red}\bf
+(\%{}i3) 
+\end{minipage}
+\begin{minipage}[t]{\textwidth}\color{blue}
+u: crossings[1];
+\end{minipage}
+%%% OUTPUT:
+\[\displaystyle
+\tag{u}\label{u}
+x=\frac{3{{m}^{2}}-6m-2}{3{{m}^{2}}+2}\mbox{}
+\]
+%%%%%%%%%%%%%%%
+
+
+\noindent
+%%%%%%%%%%%%%%%
+%%% INPUT:
+\begin{minipage}[t]{8ex}\color{red}\bf
+(\%{}i4) 
+\end{minipage}
+\begin{minipage}[t]{\textwidth}\color{blue}
+v: ratsimp(m*(u-1) + 1);
+\end{minipage}
+%%% OUTPUT:
+\[\displaystyle
+\tag{v}\label{v}
+mx-m+1=-\frac{3{{m}^{2}}+4m-2}{3{{m}^{2}}+2}\mbox{}
+\]
+%%%%%%%%%%%%%%%
+
+
+\noindent
+%%%%%%%%%%%%%%%
+%%% INPUT:
+\begin{minipage}[t]{8ex}\color{red}\bf
+(\%{}i5) 
+\end{minipage}
+\begin{minipage}[t]{\textwidth}\color{blue}
+ratsimp(subst(m = a/b, u));
+\end{minipage}
+%%% OUTPUT:
+\[\displaystyle
+\tag{\%{}o5}\label{o5} 
+x=-\frac{2{{b}^{2}}+6ab-3{{a}^{2}}}{2{{b}^{2}}+3{{a}^{2}}}\mbox{}
+\]
+%%%%%%%%%%%%%%%
+
+
+\noindent
+%%%%%%%%%%%%%%%
+%%% INPUT:
+\begin{minipage}[t]{8ex}\color{red}\bf
+(\%{}i6) 
+\end{minipage}
+\begin{minipage}[t]{\textwidth}\color{blue}
+ratsimp(subst(m = a/b, v));
+\end{minipage}
+%%% OUTPUT:
+\[\displaystyle
+\tag{\%{}o6}\label{o6} 
+\frac{ax+b-a}{b}=\frac{2{{b}^{2}}-4ab-3{{a}^{2}}}{2{{b}^{2}}+3{{a}^{2}}}\mbox{}
+\]
+%%%%%%%%%%%%%%%
+
+
+\noindent
+%%%%%%%%%%%%%%%
+%%% INPUT:
+\begin{minipage}[t]{8ex}\color{red}\bf
+(\%{}i7) 
+\end{minipage}
+\begin{minipage}[t]{\textwidth}\color{blue}
+X: 2*b\^{}2+6*a*b-3*a\^{}2;
+\end{minipage}
+%%% OUTPUT:
+\[\displaystyle
+\tag{X}\label{X}
+2{{b}^{2}}+6ab-3{{a}^{2}}\mbox{}
+\]
+%%%%%%%%%%%%%%%
+
+
+\noindent
+%%%%%%%%%%%%%%%
+%%% INPUT:
+\begin{minipage}[t]{8ex}\color{red}\bf
+(\%{}i8) 
+\end{minipage}
+\begin{minipage}[t]{\textwidth}\color{blue}
+Y: 2*b\^{}2-4*a*b-3*a\^{}2;
+\end{minipage}
+%%% OUTPUT:
+\[\displaystyle
+\tag{Y}\label{Y}
+2{{b}^{2}}-4ab-3{{a}^{2}}\mbox{}
+\]
+%%%%%%%%%%%%%%%
+
+
+\noindent
+%%%%%%%%%%%%%%%
+%%% INPUT:
+\begin{minipage}[t]{8ex}\color{red}\bf
+(\%{}i9) 
+\end{minipage}
+\begin{minipage}[t]{\textwidth}\color{blue}
+Z: 2*b\^{}2+3*a\^{}2;
+\end{minipage}
+%%% OUTPUT:
+\[\displaystyle
+\tag{Z}\label{Z}
+2{{b}^{2}}+3{{a}^{2}}\mbox{}
+\]
+%%%%%%%%%%%%%%%
+
+
+\noindent
+%%%%%%%%%%%%%%%
+%%% INPUT:
+\begin{minipage}[t]{8ex}\color{red}\bf
+(\%{}i10) 
+\end{minipage}
+\begin{minipage}[t]{\textwidth}\color{blue}
+ratsimp(2*X\^{}2 + 3*Y\^{}2);
+\end{minipage}
+%%% OUTPUT:
+\[\displaystyle
+\tag{\%{}o10}\label{o10} 
+20{{b}^{4}}+60{{a}^{2}}\,{{b}^{2}}+45{{a}^{4}}\mbox{}
+\]
+%%%%%%%%%%%%%%%
+
+
+\noindent
+%%%%%%%%%%%%%%%
+%%% INPUT:
+\begin{minipage}[t]{8ex}\color{red}\bf
+(\%{}i11) 
+\end{minipage}
+\begin{minipage}[t]{\textwidth}\color{blue}
+ratsimp(5*Z\^{}2);
+\end{minipage}
+%%% OUTPUT:
+\[\displaystyle
+\tag{\%{}o11}\label{o11} 
+20{{b}^{4}}+60{{a}^{2}}\,{{b}^{2}}+45{{a}^{4}}\mbox{}
+\]
+%%%%%%%%%%%%%%%
+\end{document}
