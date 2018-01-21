@@ -1,0 +1,111 @@
+\documentclass[11pt]{amsart}
+\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   % ... or a4paper or a5paper or ... 
+%\geometry{landscape}                % Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{epstopdf}
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+\input{../tex/defs}
+
+\title{Floor and ceiling and fractional part}
+\author{The Author}
+%\date{}                                           % Activate to display a given date or no date
+
+\begin{document}
+\maketitle
+%\section{}
+%\subsection{}
+
+% floor/ceil in defs.tex
+$\floor{x}$, $\ceil{x}$, $\{x\}$
+
+$x = \lfloor x \rfloor + \{x\}$
+
+
+$
+\floor{a + b} = \ldots
+$ ??
+
+
+$$
+0 \le \{a\} < 1  \text{ and } 0 \le \{b\} < 1  \text{ so } 0 \le \{a\} + \{b\} < 2
+$$
+
+$\{a + b\} = \{a\} + \{b\}$ if $\{a\} + \{b\} < 1$
+
+$\{a + b\} = \{a\} + \{b\} -1 $ if $\{a\} + \{b\} \ge 1$
+
+$$
+\{a + b\} =
+\begin{cases}
+\{a\} + \{b\} & \text{ if } \{a\} + \{b\} < 1 \\
+\{a\} + \{b\} -1  & \text{ if } \{a\} + \{b\} \ge 1 \\
+\end{cases}
+$$
+
+$$
+\floor{a+b} = a + b - \{a + b\}
+$$
+
+$$
+\floor{a+b} = 
+\begin{cases}
+a + b - \{a\} - \{b\} & \text{ if } \{a\} + \{b\} < 1 \\
+a + b - \{a\} - \{b\}  + 1  & \text{ if } \{a\} + \{b\} \ge 1 \\
+\end{cases}
+$$
+
+$$
+\floor{a+b} = 
+\begin{cases}
+\floor{a} + \floor{b} & \text{ if } \{a\} + \{b\} < 1 \\
+\floor{a} + \floor{b}  + 1  & \text{ if } \{a\} + \{b\} \ge 1 \\
+\end{cases}
+$$
+
+What about $\floor{a -b}$?
+
+
+
+$$
+\{a - b\} = \{a\} - \{b\} \text{ if } \{b\} \le \{a\}
+$$
+
+$$
+\{a - b\} = 1 - (\{b\} - \{a\}) \text{ if } \{b\} > \{a\}
+$$
+
+If $\{b\} \le \{a\}$:
+$$
+\begin{aligned}
+\floor{a - b} &= a - b - \{a - b\}
+\\
+& = a - b - (\{a\} - \{b\})
+\\
+& = a  - \{a\} - (b - \{b\})
+\\
+& = \floor{a} - \floor{b}
+\end{aligned}
+$$
+
+If $\{b\} > \{a\}$:
+$$
+\begin{aligned}
+\floor{a - b} &= a - b - \{a - b\}
+\\
+& = a - b - ( 1 - \{b\} + \{a\})
+\\
+& = a  - \{a\} - (b - \{b\}) - 1
+\\
+& = \floor{a} - \floor{b} - 1
+\end{aligned}
+$$
+
+
+
+
+
+
+\end{document}  
