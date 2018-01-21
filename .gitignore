@@ -4,3 +4,5 @@
 *.synctex.gz
 .ipynb_checkpoints
 *DS_Store
+*.mov
+*.mp4
