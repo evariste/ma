@@ -1,0 +1,313 @@
+\documentclass[11pt]{amsart}
+\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   % ... or a4paper or a5paper or ... 
+%\geometry{landscape}                % Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{epstopdf}
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+
+\title{Brief Article}
+\author{The Author}
+%\date{}                                           % Activate to display a given date or no date
+
+\begin{document}
+\maketitle
+%\section{}
+%\subsection{}
+
+\section{a}
+
+$\zeta = e^{2 \pi i / 5} = \cos (2 \pi / 5) + i \sin( 2 \pi / 5)$
+
+\section{b}
+
+\textbf{
+Show that $1 + \zeta + \zeta^{2} + \zeta^{3} + + \zeta^{4} = 0$
+}
+
+\vspace{1em}
+
+We have 
+
+$$
+\begin{aligned}
+\zeta &= e^{2 \pi i / 5} = \cos (2 \pi / 5) + i \sin( 2 \pi / 5) \\
+\zeta^{2} &= e^{4 \pi i / 5} = \cos (4 \pi / 5) + i \sin( 4 \pi / 5) \\
+\zeta^{3} &= e^{6 \pi i / 5} = \cos (6 \pi / 5) + i \sin( 6 \pi / 5) \\
+\zeta^{4} &= e^{8 \pi i / 5} = \cos (8 \pi / 5) + i \sin( 8 \pi / 5) \\
+\end{aligned}
+$$
+
+Let $c = \cos (\pi / 5)$ and $s = \sin (\pi / 5)$.
+
+$$
+\begin{aligned}
+\zeta &=  (2 c^{2} - 1) + i (2 c s) \\
+\zeta^{2} &= (-c) + i (s) \\
+\zeta^{3} &= (-c) + i (-s) \\
+\zeta^{4} &= (2 c^{2} - 1) + i (- 2 c s) \\
+\end{aligned}
+$$
+
+Substitute these into the expression $1 + \zeta + \zeta^{2} + \zeta^{3} + + \zeta^{4}$ to get
+
+$$
+\begin{aligned}
+1 + \zeta + \zeta^{2} + \zeta^{3} + + \zeta^{4} 
+&= 
+1 + 2 (2 c^{2} - 1) + 2(-c)
+\\
+&=
+4 c^{2}  - 2c - 1
+\\
+&=
+0
+\end{aligned}
+$$
+
+This equals zero because ... See Section \ref{sec:piOverFiveIdentity}.
+
+
+\section{c}
+
+\textbf{
+Show $z = \zeta + \overline{\zeta}$ is a root of a quadratic equation.
+}
+
+\vspace{1em}
+
+$z = \zeta + \overline{\zeta}$ so $z = \zeta +  \zeta^{4}$.
+
+$z^{2} = (\zeta +  \zeta^{4})^{2} = \zeta^{2} + 2 \zeta^{5} + \zeta^{8}$
+
+So
+
+$z^{2} = \zeta^{2} + 2  + \zeta^{3}$
+
+$z + z^{2} = \zeta + \zeta^{4} + \zeta^{2} + 2 + \zeta^{3} = 1$
+%
+using 
+$1 + \zeta + \zeta^{2} + \zeta^{3} + + \zeta^{4} = 0$
+
+So
+
+$$
+z^{2} + z - 1 = 0
+$$
+
+as required.
+
+\section{d}
+
+\textbf{
+Compute the value of $z$ and hence the value of $\cos (72^{\circ})$.
+}
+
+\vspace{1em}
+
+
+$$
+z = \frac{-1 \pm \sqrt{5}}{2}
+$$
+
+$z = \zeta + \overline{\zeta} = 2 \cos (72^{\circ})$ so we only consider the positive square root.
+
+$$
+z = \frac{-1 + \sqrt{5}}{2}
+$$
+
+so
+
+$$
+\cos(72^{\circ}) = \frac{-1 + \sqrt{5}}{4}
+$$
+
+NB 
+
+$$
+\cos(72^{\circ}) = \frac{-1 + \sqrt{5}}{4} = \frac{1}{ 2 \varphi}
+$$
+
+
+
+
+\section{e}
+
+\textbf{
+Demonstrate that $\cos(2 \pi / 7)$ is a root of a nonzero cubic polynomial with integer coefficients.
+}
+
+Similar reasoning to the above.
+
+Let $\omega$ be the root of $x^{7} = 1$ with $\omega = \cos(2 \pi / 7) + i  \sin(2 \pi / 7)$.
+
+The seventh roots of 1 are $1, \omega, ..., \omega^{6}$. They are arranged on a heptagon. Their sum is zero because, considering them as vectors, and putting them nose to tail, they form another closed heptagon with edge length 1.
+
+I.e. 
+
+$$
+\sum_{k=0}^{6} \omega^{k} = 0
+$$
+
+Let $z = \omega + \overline{\omega} = \omega + \omega^{6}$.
+
+$z^{2} = (\omega + \omega^{6})^{2} = \omega^{2} + 2 \omega^{7} + \omega^{12}
+= \omega^{2} + 2 + \omega^{5}
+$
+
+$$
+\begin{aligned}
+z^{3} &= (\omega + \omega^{6}) (\omega^{2} + 2 + \omega^{5})
+\\
+&= \omega^{3} + 2 \omega + \omega^{6} + \omega^{8} + 2 \omega^{6} + \omega^{11}
+\\
+&= \omega^{3} + 2 \omega + \omega^{6} + \omega + 2 \omega^{6} + \omega^{4}
+\\
+&= 3 \omega + \omega^{3} + \omega^{4} +
+3 \omega^{6}
+\end{aligned}
+$$
+
+Using the expressions for $z$ and $z^{3}$
+
+$$
+z^{3} - 2 z =  \omega + \omega^{3} + \omega^{4} + \omega^{6}
+$$
+
+Adding the expression for $z^{2}$
+
+
+$$
+\begin{aligned}
+z^{3} - 2 z + z^{2 }
+&=
+\omega + \omega^{3} + \omega^{4} + \omega^{6} + \omega^{2} + 2 + \omega^{5}
+\\
+&=
+1 + 1 + 
+\omega + \omega^{2} + \omega^{3} + \omega^{4} + \omega^{5} + \omega^{6}  
+\\
+&=
+1 + 0 = 1
+\end{aligned}
+$$
+
+So $z = \omega + \overline{\omega}$ is root of the cubic equation $z^{3} - 2 z + z^{2 } - 1 = 0$.
+
+But $z = 2 \cos (2 \pi / 7)$ so that $\cos (2 \pi / 7)$ is also the root of a cubic.
+
+In particular, if $c = \cos (2 \pi / 7)$, then we have
+
+$$
+\begin{aligned}
+z^{3} - 2 z + z^{2 } - 1 &= 0
+\\
+(2 c)^{3} - 2 (2c) + (2c)^{2 } - 1 
+&= 0
+\\
+8 c^{3} + 4c^{2} - 4c  - 1 
+&= 0
+\end{aligned}
+$$
+
+Which is a cubic with integer coefficients as required.
+
+
+
+\section{Identity for $\cos (36^{\circ})$}
+\label{sec:piOverFiveIdentity}
+
+\textbf{
+Show that for $\theta = \pi / 5$, we have $4 \cos \theta^2 - 2 \cos \theta - 1 = 0$
+}
+
+\vspace{1em}
+
+Consider $\theta = \pi / 5 =  36^{\circ}$ 
+
+$$
+\begin{aligned}
+\cos(2 \theta) &= 
+\cos(\pi - 3 \theta)
+\\ 
+&= \cos \pi \cos 3 \theta  \; + \; \sin \pi \sin 3 \theta
+\\
+&= - \cos 3 \theta
+\end{aligned}
+$$
+
+The formulas for $\cos 2 \theta$ and $\cos 3 \theta$
+$$
+\cos 2 \theta = \cos^2 \theta - \sin^2 \theta = 2 \cos^2 \theta - 1
+$$
+
+$$
+\begin{aligned}
+\cos 3 \theta &= Re ( \cos \theta + i \sin \theta)^3
+\\
+&=
+\cos^3 \theta - 3 \cos \theta \sin \theta^2
+\\
+&=
+4 \cos^3 \theta - 3 \cos \theta
+\end{aligned}$$
+
+Substitute into the expression earlier
+
+$$
+\begin{aligned}
+\cos(2 \theta) 
+&= - \cos 3 \theta
+\\
+\cos(2 \theta) +
+ \cos 3 \theta &=0
+\\
+2 \cos^2 \theta - 1
++
+4 \cos^3 \theta - 3 \cos \theta
+&=0
+\end{aligned}
+$$
+
+Rearrange
+
+$$
+4 \cos^3 \theta
++ 2 \cos^2 \theta
+ - 3 \cos \theta 
+ - 1
+=0
+$$
+
+$\cos \theta = -1$ satisfies this (because $\cos 2 \theta = - \cos 3 \theta$ is also satisfied by $\theta = \pi$). So we can take out a factor of $(\cos \theta + 1)$ in the above
+
+$$
+\begin{aligned}
+4 \cos^3 \theta
++ 2 \cos^2 \theta
+ - 3 \cos \theta 
+ - 1
+&=0
+\\
+(\cos \theta + 1)
+(4 \cos \theta^2 - 2 \cos \theta - 1)
+&=0
+\end{aligned}
+$$
+
+So for $\theta = \pi / 5$, we have $4 \cos \theta^2 - 2 \cos \theta - 1 = 0$.
+
+This gives:
+$$
+\cos (\pi/5)
+=
+\frac{2 + \sqrt{4 + 16}}{8} = \frac{1 + \sqrt{5}}{4}
+$$
+
+
+N.B. $\cos (\pi / 5) = \varphi / 2$
+
+
+\end{document}  
