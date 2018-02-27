@@ -267,3 +267,34 @@
 }
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\def\cpm{%
+  \mathchoice%
+  {\xcpm\displaystyle{.2ex}{.53ex}}% displaystyle
+  {\xcpm\textstyle{.2ex}{.53ex}}% textstyle
+  {\xcpm\scriptstyle{.16ex}{.43ex}}% scriptstyle
+  {\xcpm\scriptscriptstyle{.11ex}{.35ex}}% scriptscriptstyle
+}
+
+\def\cmp{%
+  \mathchoice%
+  {\xcmp\displaystyle{.8ex}{.03ex}}% displaystyle
+  {\xcmp\textstyle{.8ex}{.03ex}}% textstyle
+  {\xcmp\scriptstyle{.16ex}{.43ex}}% scriptstyle
+  {\xcmp\scriptscriptstyle{.11ex}{.35ex}}% scriptscriptstyle
+}
+
+
+\def\xcpm#1#2#3{\mathbin{\ooalign{%
+      \raise #2\hbox{\pdfliteral{0 1 0 rg}$#1+$\pdfliteral{0 g}}\cr
+      \lower #3\hbox{\pdfliteral{1 0 0 rg}$#1-$\pdfliteral{0 g}}%
+  }}}
+
+
+
+
+
+\def\xcmp#1#2#3{\mathbin{\ooalign{%
+      \raise #2\hbox{\pdfliteral{0 1 0 rg}$#1-$\pdfliteral{0 g}}\cr
+      \lower #3\hbox{\pdfliteral{1 0 0 rg}$#1+$\pdfliteral{0 g}}%
+  }}}
+
