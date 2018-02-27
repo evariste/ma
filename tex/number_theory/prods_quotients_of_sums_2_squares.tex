@@ -1,0 +1,311 @@
+\documentclass[11pt]{amsart}
+\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   % ... or a4paper or a5paper or ... 
+%\geometry{landscape}                % Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+\usepackage{epstopdf}
+\usepackage{hyperref}
+
+
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+
+\input{../defs}
+
+\title{Product and quotient of numbers that are expressible as the sum of two squares}
+\author{The Author}
+%\date{}                                           % Activate to display a given date or no date
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[section]
+
+
+\usepackage{cleveref}
+
+\begin{document}
+\maketitle
+%\section{}
+%\subsection{}
+
+\section{Product}
+
+\begin{theorem}
+Let two integers be expressible as the sum of two integers. I.e. let $m = a^2 + b^2$ and $n = c^2 + d^2$ where $a,b,c,d \in \mathbb{N}$.
+
+Show that the product $mn$ is expressible as the sum of two integers.
+\end{theorem}
+
+\begin{proof}
+
+We can write $m = u \overline{u}$ where $u = a + b i$ and $n = v \overline{v}$ where $v = c + d i $.
+
+$mn = u \overline{u} v \overline{v} = uv \overline{uv} = w \overline{w}$ where $w = uv$.
+
+$w = e + f i$ with $e,f \in \mathbb{N}$ so $mn = e^2 + f^2$.
+
+\end{proof}
+
+Specifically, $e + f i = (a + b i) ( c + d i)$ so that $e = ac - bd$ and $f = ad + bc$.
+
+\section{Quotient}
+
+It seems harder to prove a similar result for a quotient, i.e. that if integers $m, q, p$ are such that $m = p q$ and we have $m$ and $p$ both expressible as a sum of two squared integers, then can we prove that $q = m / p$ is also a sum of two squares?
+
+There is a proof of a similar result due to Euler for the result
+at
+\href{http://eulerarchive.maa.org/docs/translations/E228en.pdf}{this link}.
+
+\begin{theorem}
+If $m = pq$ is expressible as the sum of two squares and $p$ is a prime that is the sum of two squares, then $q = m / p$ can be written as the sum of two squares.
+\end{theorem}
+
+\begin{proof} \emph{(Euler)}
+Let $m = pq = a^2 + b^2$ for $a,b \in \mathbb{N}$.
+
+It is also assumed that The prime $p$ can be written as the sum of two squares, $p = c^2 + d^2$.
+
+We have, for the integer $q$:
+$$
+q = \frac{a^2 + b^2}{c^2 + d^2}
+$$
+which means that $c^2 + d^2$ $|$ $a^2 + b^2$.
+
+The following also holds:
+$$
+\begin{aligned}
+c^2 + d^2 \quad &| \quad c^2 ( a^2 + b^2) \\
+ c^2 + d^2 \quad &| \quad a^2 ( c^2 + d^2) \\
+\end{aligned}
+$$
+so that $c^2 + d^2$ divides the difference of the right hand terms, i.e. 
+$$
+c^2 + d^2 \quad
+c^2 ( a^2 + b^2) - a^2 ( c^2 + d^2) 
+= b^2 c^2 - a^2 d^2
+$$
+
+Now $c^2 + d^2 = p$ is a prime so 
+$$
+p \quad | \quad b^2 c^2 - a^2 d^2 = (bc + ad)  (bc - ad)
+$$
+means that
+$$
+\begin{aligned}
+p = c^2 + d^2 \quad &| \quad bc + ad  \\
+\text{ or } \quad c^2 + d^2 \quad &| \quad bc - ad
+\end{aligned}
+$$
+
+This means there must be an integer $m$ such that $bc \pm ad = m (c^2 + d^2)$
+
+In the case of $bc + ad = m (c^2 + d^2)$, we can choose integers $x$ and $y$ such that
+$$
+\begin{aligned}
+b &= mc + x \\
+a &=  md + y
+\end{aligned}
+$$
+
+We can substitute these into the expression $bc + ad = m (c^2 + d^2)$ to obtain
+$$
+(mc + x)c + (md + y)d = m (c^2 + d^2)
+$$
+which simplifies to
+$$
+mc^2 + xc + md^2 + yd = m c^2 + m d^2
+$$
+so that 
+$$
+xc + yd = 0 \qquad \Rightarrow \qquad
+\frac{x}{y} = - \frac{d}{c}
+$$
+
+In the other case, where $c^2 + d^2 $ $|$ $bc-ad$ so that  $bc - ad = m (c^2 + d^2)$, we can choose integers $x$ and $y$ such that
+$$
+\begin{aligned}
+b &= mc + x \\
+a &=  - md + y
+\end{aligned}
+$$
+which leads to 
+$$
+(mc + x)c - (- md + y)d = m (c^2 + d^2)
+$$
+so that 
+$$
+xc - yd = 0
+\qquad \Rightarrow \qquad
+\frac{x}{y} = \frac{d}{c}
+$$
+
+So both cases lead to either $x/y = -d/c$ or $x/y = d/c$.
+
+Recall that $c^2 + d^2 = p$ which is a prime so $c$ and $d$ cannot have a common factor greater than one.  This means the fraction $d/c$ is in its simplest form and therefore, for some integer $n$, we have
+$$
+\begin{aligned}
+x = nd \quad & y = - n c & \quad \text{ if } \quad
+ c^2 + d^2 \quad | \quad bc + ad
+\\
+x = nd \quad & y =  n c & \quad \text{ if } \quad
+c^2 + d^2 \quad | \quad bc - ad
+\end{aligned}
+$$
+
+We can substitute these into the expressions for $a$ and $b$ to obtain
+
+$$
+ a = \mp md \pm nc  \qquad b = mc + nd
+$$
+
+Now we can write $pq = a^2 + b^2$ as
+$$
+\begin{aligned}
+pq &= a^2 + b^2 \\
+&=
+(\mp md \pm nc)^2  +  (mc + nd)^2 
+\\
+&= 
+m^2 d^2 - 2 mncd + n^2 c^2 + m^2 c^2 + 2 mncd + n^2 d^2
+\\
+&= 
+m^2 d^2 + n^2 c^2 + m^2 c^2  + n^2 d^2
+\\
+&= 
+( c^2 + d^2 ) (m^2 + n^2) 
+\end{aligned}
+$$
+from which we can deduce that $q = m^2 + n^2$, so $q$ is the sum of two integers as required.
+
+\end{proof}
+
+\section{Quotient revisited}
+
+What about considering the remainder of numbers after division by 4. Squaring an even number gives a multiple of 4 and squaring an odd number gives an answer of the form $4k+1$. Adding two squared integers therefore gives results that are 0, 1 or 2 mod 4.
+
+I.e. it is impossible to add two squares to obtain a result of the form $4 k + 3$.
+
+\vspace{1em}
+
+Consider a number $m$ that is expressible as the sum of two squares. Let $m = a^2 + b^2$. If $m$ is even, then either $a$ and $b$ are both even or they are both odd.
+
+If $a$ and $b$ are both even, then we can write $m = (2k)^2 + (2l)^2$ 
+for some integers $k$,$l$ so that $m = 4 (k^2 + l^2)$. This means we can divide $m$ by 4 to obtain a smaller integer $m'$, that is also the sum of two squares $m/4 = m' = k^2 + l^2$.
+
+\vspace{1em}
+
+In general, if $a$ and $b$ are both odd or both even, assume without loss of generality that $a >= b$. We have $a+b$ and $a-b$ are both even, and we can write $m/2$ as the sum of two integers as follows:
+$$
+\frac{m}{2} = \left(\frac{a+b}{2}\right)^2 + \left(\frac{a-b}{2}\right)^2
+$$
+
+
+\vspace{1em}
+
+So, if $m = a^2 + b^2$ is even, we can find a smaller integer that is also expressible as the sum of two squares (either $m/4$ or $m/2$).
+
+
+\vspace{1em}
+
+\begin{theorem}
+Every even number that is the sum of two squares has an odd factor that is the sum of two squares.
+\end{theorem}
+
+\begin{proof}
+We can write a factorisation of $m = a^2 + b^2$ as $m = 2^k n$ where $n$ is an odd integer.
+Using the method described above, we can obtain a successively decreasing sequence of integers to `remove' all the factors of 2.
+$$
+m = m_0 , m_1, m_2, \ldots, m_k = m/2^{k} =  n
+$$
+where $m_i = m_{i-1}/2$ is expressible as the sum of two squares.
+
+In this case we can obtain an odd number $n$ which is the sum of two squares.
+\end{proof}
+
+\vspace{1em}
+
+For the next parts, we assume as given the following characteristics of Gaussian primes, namely that
+\begin{itemize}
+\item
+If a prime $p$ is of the form $4k+1$, then $p$ can be factored into Gaussian primes as $p = q \, \overline{q}$  where $q = x + y i$ for some integers $x$ and $y$. Other factorisations can be obtained by replacing $q$ with an associated prime $w q$ where $w$ is a unit, i.e. $w = \pm 1$ or $w = \pm i$.
+\item
+If a prime $p$ is of the form $4 k + 3$ then it is already a Gaussian prime. It has associated primes $-p$, $ip$ and $-ip$.
+\end{itemize}
+
+
+\vspace{1em}
+
+\begin{theorem}
+If $m = a^{2} + b^{2}$ and $p$ is a prime factor of $m$ of the form $4k+1$, then $m/p$ is expressible as the sum of two squares.
+\end{theorem}
+
+\begin{proof}
+We can write $m = (a+b i) ( a - b i)$. Because $p$ is prime and $p = 1 \mod 4$, it has a factorisation $p = q \overline{q}$ 
+where $q$ is a Gaussian prime.
+
+The prime $q$ divides the product $(a+b i) ( a - b i)$ so it must divide one of the factors $a+bi$ or $a-bi$. If $q$ divides $(a+bi)$, say,  write $r = (a+bi) / q$. $r$ is a Gaussian integer and so is $\overline{r}$. In fact $\overline{r} = (a-bi) / \overline{q}$. If we write  $r = c + d i$, then 
+$$
+c^{2} + d^{2} = r \overline{r} = \frac{(a + b i)}{q} \frac{(a - b i)}{\overline{q}}= \frac{a^{2}+b^{2}}{p} = \frac{m}{p}
+$$
+which shows that $m/p$ is expressible as the sum of two squares.
+
+A similar argument can be used if $q$ divides $a-bi$.
+\end{proof}
+
+
+\vspace{1em}
+
+\begin{theorem}
+If $m = a^{2} + b^{2}$ and $p$ is a prime factor of $m$ of the form $4k+3$, then $p$ divides both of $a$ and $b$.
+\end{theorem}
+
+\begin{proof}
+
+Write $m = (a + b i) (a - b i)$. $p$ is of the form $p=4k+3$ so $p$ is a Gaussian prime and therefore cannot be factorised into a product of non-units.
+
+ $p$ divides $m$ so, as a Gaussian prime, $p \, | \, a + b i$
+or $p \, | \, a - b i$. In either case, $p \, | \, a $ and $p \, | \, b $.
+
+\end{proof}
+
+\vspace{1em}
+
+\begin{corollary}
+\label{cor:pSquaredDivM}
+If prime $p$ of the form $4k+3$ divides $m = a^{2} + b^{2}$ then $p^{2}$ divides both $a^{2}$ and $b^{2}$ which makes $p^{2} \, | \, m$.
+\end{corollary}
+
+\begin{theorem}
+If prime $p$ of the form $4k+3$ divides $m = a^{2} + b^{2}$, then $p$ must have an even exponent in the factorisation of $m$.
+\end{theorem}
+
+\begin{proof}
+From~\cref{cor:pSquaredDivM}, write $a = d p^{q}$ and $b = e p^{r}$ where $d$ and $e$ are not divisible by $p$. Assume without loss of generality that $q \le r$.
+So 
+$$
+m  = d^{2} p^{2q} + e^{2} p^{2r} = 
+p^{2q} \left( d^{2} + e^{2} p^{2r-2q} \right)
+$$
+In the above, the term in the brackets is not divisible by $p$. So $p^{2q}$ is a factor of $m$ with even exponent.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}  
