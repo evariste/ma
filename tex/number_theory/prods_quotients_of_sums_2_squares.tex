@@ -210,7 +210,7 @@ So, if $m = a^2 + b^2$ is even, we can find a smaller integer that is also expre
 \vspace{1em}
 
 \begin{theorem}
-Every even number that is the sum of two squares has an odd factor that is the sum of two squares.
+If an even number is the sum of two squares and has an odd factor, then the odd factor is the sum of two squares.
 \end{theorem}
 
 \begin{proof}
@@ -219,9 +219,12 @@ Using the method described above, we can obtain a successively decreasing sequen
 $$
 m = m_0 , m_1, m_2, \ldots, m_k = m/2^{k} =  n
 $$
-where $m_i = m_{i-1}/2$ is expressible as the sum of two squares.
+where $m_i = m_{i-1}/2$ and $m_{i}$ is expressible as the sum of two squares using the formula above.
 
-In this case we can obtain an odd number $n$ which is the sum of two squares.
+
+In this case we end up with the odd factor $n$ which is the sum of two squares.
+
+
 \end{proof}
 
 \vspace{1em}
@@ -274,7 +277,7 @@ or $p \, | \, a - b i$. In either case, $p \, | \, a $ and $p \, | \, b $.
 
 \begin{corollary}
 \label{cor:pSquaredDivM}
-If prime $p$ of the form $4k+3$ divides $m = a^{2} + b^{2}$ then $p^{2}$ divides both $a^{2}$ and $b^{2}$ which makes $p^{2} \, | \, m$.
+If prime $p$ of the form $4k+3$ and divides $m = a^{2} + b^{2}$ then $p^{2}$ divides both $a^{2}$ and $b^{2}$ which means also that $p^{2} \, | \, m$.
 \end{corollary}
 
 \begin{theorem}
