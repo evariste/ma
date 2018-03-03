@@ -13,9 +13,9 @@
 
 \DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
 
-\input{../defs}
+\input{../../defs}
 
-\title{Product and quotient of numbers that are expressible as the sum of two squares}
+\title{Numbers that are expressible as the sum of two squares}
 \author{The Author}
 %\date{}                                           % Activate to display a given date or no date
 
@@ -29,6 +29,10 @@
 \maketitle
 %\section{}
 %\subsection{}
+
+
+Some results on numbers that can be written as the sum of two squares.
+
 
 \section{Product}
 
@@ -50,13 +54,45 @@ $w = e + f i$ with $e,f \in \mathbb{N}$ so $mn = e^2 + f^2$.
 
 Specifically, $e + f i = (a + b i) ( c + d i)$ so that $e = ac - bd$ and $f = ad + bc$.
 
+
+\vspace{2em}
+
+\begin{theorem}
+If, for a number $m$, every prime factor $p$ of the form $4k+3$ has an even exponent, then $m$ can be written as the sum of two squares.
+\end{theorem}
+
+\begin{proof}
+Write 
+$$
+m = 2^k q_{1}^{e_1} \ldots q_{k}^{e_k} p_{1}^{2 d_1} \ldots p_{j}^{2 d_k} 
+$$
+where the $q_i$ are the prime factors of the form $4k+1$ and the $p_i$ are prime factors of the form $4k+3$
+
+The factorisation of $m$ can be used to express it as the product of a set of smaller numbers that each are the sum of two squares:
+\begin{itemize}
+\item
+If $k$ is even then we can write $2^k = a^{2} + 0^{2}$ where $a = 2^{k/2}$. If $k$ is odd, then we can write $2^{k} = a^{2} + a^{2}$ where $a = 2^{(k-1)/2}$.
+\item
+Each prime $q_{i}$ can itself be written as the sum of two squares (See Gaussian primes below).
+\item
+The factors $p_{i}^{2 d_{i}}$ can be written as $a^{2} + 0^{2}$ where $a = p_{i}^{d_{i}}$.
+\end{itemize}
+
+
+
+
+
+\end{proof}
+
+
+
 \section{Quotient}
 
 It seems harder to prove a similar result for a quotient, i.e. that if integers $m, q, p$ are such that $m = p q$ and we have $m$ and $p$ both expressible as a sum of two squared integers, then can we prove that $q = m / p$ is also a sum of two squares?
 
 There is a proof of a similar result due to Euler for the result
 at
-\href{http://eulerarchive.maa.org/docs/translations/E228en.pdf}{this link}.
+\href{http://eulerarchive.maa.org/docs/translations/E228en.pdf}{this link}. There is a much easier proof using Gaussian primes (See~\cref{thm:m_over_p_is_sum_of_two_squares}).
 
 \begin{theorem}
 If $m = pq$ is expressible as the sum of two squares and $p$ is a prime that is the sum of two squares, then $q = m / p$ can be written as the sum of two squares.
@@ -194,7 +230,24 @@ Consider a number $m$ that is expressible as the sum of two squares. Let $m = a^
 If $a$ and $b$ are both even, then we can write $m = (2k)^2 + (2l)^2$ 
 for some integers $k$,$l$ so that $m = 4 (k^2 + l^2)$. This means we can divide $m$ by 4 to obtain a smaller integer $m'$, that is also the sum of two squares $m/4 = m' = k^2 + l^2$.
 
-\vspace{1em}
+
+\vspace{2em}
+
+Below, we show the following results:
+
+
+
+If $m$ can be written as the sum of two squares and $p$ is a prime factor of $m$ then we can obtain a number $x$ that divides $m$ and that is also the sum of two squares:
+\begin{itemize}
+\item
+If $p=2$ or $p=4k+1$, then $x = m/p$
+\item
+If $p=4k+3$, then $p^2 | m$ and we can use $x= m/ p^2$.
+\end{itemize}
+
+\vspace{2em}
+
+
 
 In general, if $a$ and $b$ are both odd or both even, assume without loss of generality that $a >= b$. We have $a+b$ and $a-b$ are both even, and we can write $m/2$ as the sum of two integers as follows:
 $$
@@ -204,10 +257,9 @@ $$
 
 \vspace{1em}
 
-So, if $m = a^2 + b^2$ is even, we can find a smaller integer that is also expressible as the sum of two squares (either $m/4$ or $m/2$).
+So, if $m = a^2 + b^2$ is even, we can find a smaller integer that is also expressible as the sum of two squares (either $m/4$ or $m/2$).]
 
 
-\vspace{1em}
 
 \begin{theorem}
 If an even number is the sum of two squares and has an odd factor, then the odd factor is the sum of two squares.
@@ -241,6 +293,7 @@ If a prime $p$ is of the form $4 k + 3$ then it is already a Gaussian prime. It 
 \vspace{1em}
 
 \begin{theorem}
+\label{thm:m_over_p_is_sum_of_two_squares}
 If $m = a^{2} + b^{2}$ and $p$ is a prime factor of $m$ of the form $4k+1$, then $m/p$ is expressible as the sum of two squares.
 \end{theorem}
 
@@ -261,6 +314,7 @@ A similar argument can be used if $q$ divides $a-bi$.
 \vspace{1em}
 
 \begin{theorem}
+\label{thm:pIs4kPlus3AndDividesBothAandB}
 If $m = a^{2} + b^{2}$ and $p$ is a prime factor of $m$ of the form $4k+3$, then $p$ divides both of $a$ and $b$.
 \end{theorem}
 
@@ -281,6 +335,7 @@ If prime $p$ of the form $4k+3$ and divides $m = a^{2} + b^{2}$ then $p^{2}$ div
 \end{corollary}
 
 \begin{theorem}
+\label{thm:pIs4kPlus3EvenExponentInM}
 If prime $p$ of the form $4k+3$ divides $m = a^{2} + b^{2}$, then $p$ must have an even exponent in the factorisation of $m$.
 \end{theorem}
 
@@ -293,6 +348,206 @@ p^{2q} \left( d^{2} + e^{2} p^{2r-2q} \right)
 $$
 In the above, the term in the brackets is not divisible by $p$. So $p^{2q}$ is a factor of $m$ with even exponent.
 \end{proof}
+
+
+\begin{corollary}
+
+If $m = a^2+b^2$ has a prime factor $p$ of the form $4k+3$ then $m/p^2$ can be written as the sum of two squares.
+
+\end{corollary}
+
+\section{Characterising numbers that are the sum of two squares by their prime factors}
+
+
+If a number can be written as the sum of two squares, in how many ways is this possible?
+
+
+Consider the different cases
+\begin{itemize}
+\item
+$m = 2^{k}$
+\item
+$m = p^{k}$ where $p$ is a prime of the form $4k+1$
+\item
+$m = p^{k}$ where $p$ is a prime of the form $4k+3$
+\end{itemize}
+
+\vspace{1em}
+
+The pairs of squared integers for each kind of prime can be combined to give a representation for a number based on its prime factors.
+
+See the python code in 
+
+
+\vspace{2em}
+
+\textbf{Case:} $m = p^{k}$ where $p$ is a prime of the form $4k+1$
+
+\begin{theorem}
+All distinct ways of representing $p^{k}$ as the sum of two squares (where prime $p=4k+1$) are obtained from Gaussian integers $z_{j} = q^{j} \, \overline{q}^{\,k - j}$ where  $0 \le j \le \floor{k/2}$
+\end{theorem}
+
+\begin{proof}
+
+
+In this case, the integer prime $p$ can be factorised into $p = q \overline{q}$ where $q$ is a G-prime. So $p^{k}= q^{k} \, \overline{q}^{\,k}$.
+
+Write $z_{j} =  q^{j} \, \overline{q}^{\,k - j}$ for some $j$, with $0 \le j \le k$.
+We have $z_{j}$ is a Gaussian integer and $\overline{z_{j}} = \overline{q}^{\, j} \, q^{\,k - j}$. 
+
+So, $z_{j} \overline{z_{j}} = q^{k} \, \overline{q}^{\,k} = p^{k}$. This means that $z_{j}$ provides a sum of two squares representation for $p^{k}$, if $z_{j} = a + b i$ then $p^{k} = a^{2} + b^{2}$.
+
+Varying $j$ provides distinct representations for $0 \le j \le \floor{k/2}$. 
+Let $z_{i} = q^{i} \, \overline{q}^{\,k - i}$ and $z_{j} = q^{j} \, \overline{q}^{\,k - j}$ for distinct $i$, $j$ with $0 \le i,j \le \floor{k/2}$. We have $z_{i} \ne \overline{z_{j}}$ because otherwise $k-i$ would equal $j$ but this is not possible for $i,j$ between 0 and $\floor{k/2}$.
+
+On the other hand, $z_{k-j} =  \overline{z_{j}}$ so that $z_{k-j}$ will provide the same pair of integers in the sum of two squares representation as provided by $z_{j}$.
+
+\vspace{1em}
+
+Conversely, if $p^{k} = a^{2} + b^{2}$ for some integers $a$, $b$ then we can write $p = w \overline{w}$ where $w =  (a + b i) $.
+
+The Gaussian factorisation of $p_{k}$ only contains the associated primes $q$ and $\overline{q}$ where $p^{k}= q^{k} \, \overline{q}^{\,k}$, the terms in this factorisation must be divided between $w$ and $\overline{w}$. Let the number of times that $q$ divides $w$ be $j$, therefore, $k-j$ occurrences of $q$ remain for the factorisation of $\overline{w}$.
+This means that $\overline{q}$ must also appear $k-j$ times in the factorisation of $w$ - leaving $j$ appearances of $\overline{q}$ in $\overline{w}$.
+
+In other words, given a value of $j$, we can write  $w = q^{j} \, \overline{q}^{\,k - j}$.
+
+\end{proof}
+
+
+\begin{corollary}
+For a prime $p$ of the form $4k+1$, there are $\floor{k/2} + 1$ ways of expressing it as the sum of two squares
+\end{corollary}
+
+
+
+
+\vspace{2em}
+
+\textbf{Case:} $m = p^{k}$ where $p$ is a prime of the form $4k+3$
+
+
+We have $p | m$ so $k$ must be even by \cref{thm:pIs4kPlus3EvenExponentInM}. This means we can write $m$ as the sum of two squares as follows:
+$$
+m = p^{k} = \left( p^{k/2} \right)^{2} + 0^{2}
+$$
+
+Can we write $m = a^{2} + b^{2}$ where $a>0$ and $b>0$?
+
+If $m = a^{2} + b^{2}$, then $p|a$ and $p|b$ by \cref{thm:pIs4kPlus3AndDividesBothAandB}.
+
+If we write $a = p^{q} c$ and $b = p^{r} d$, where $c,d \ge 1$ and $p$ does not divide either of $c$ or $d$. We can assume without loss of generality that $q \le r$.
+
+$m = a^{2} + b^{2}$ in this case means that
+$$
+p^{k} = a^{2} + b^{2} = c^{2} p^{2q} + d^{2} p^{2r} = 
+p^{2q} \left( c^{2} + d^{2} p^{2r} \right)
+$$
+so the term in the bracket is co-prime to $p$ and greater than one. But this is not possible because it would also need to be a factor of $p^{k}$.
+
+
+
+
+\vspace{2em}
+
+\textbf{Case:} $m = 2^{k}$ 
+
+Try to show that if $2^{k} = a^{2} + b^{2}$ then $a$ and $b$ are either both powers of two or one of them is zero.
+
+\vspace{2em}
+
+\begin{theorem}
+The solutions $a$, $b$ of $2^{k} = a^{2} + b^{2}$ are
+\begin{itemize}
+\item
+$a = 2^{n}$ and $b = 0$ if $k = 2n$
+\item
+$a = b = 2^{n}$ if $k = 2n + 1$
+\end{itemize}
+\end{theorem}
+
+\begin{proof}
+
+If $2^{k} = a^{2} + b^{2}$ we have $a$ and $b$ with the same parity and 
+$$
+2^{k} = a^{2} + b^{2} \Rightarrow
+2^{k-1} = \left(\frac{a+b}{2}\right)^2 + \left(\frac{a-b}{2}\right)^2
+$$
+
+As $2^{k-1}$ can also be written as the sum of two squares and is even if $k>1$, we can repeat the trick
+$$
+2^{k-2} = 
+\left(\frac{1}{2} \left(
+\frac{a+b}{2} + \frac{a-b}{2}
+\right)\right)^2
++
+\left(\frac{1}{2} \left(
+\frac{a+b}{2} - \frac{a-b}{2}
+\right)\right)^2
+$$
+so that
+$$
+2^{k-2} = 
+\left(\frac{a}{2}\right)^2
++
+\left(\frac{b}{2}\right)^2
+$$
+
+So we can obtain a chain of decreasing powers of two, where each can be written as the sum of two squares
+$$
+\begin{aligned}
+2^{k} &= a^{2} + b^{2} 
+\\
+2^{k-1} &= 
+\left(\frac{a+b}{2}\right)^2 + 
+\left(\frac{a-b}{2}\right)^2 
+\\
+2^{k-2} &= 
+\left(\frac{a}{2}\right)^2
++
+\left(\frac{b}{2}\right)^2
+\\
+2^{k-3} &= 
+\left(\frac{a+b}{4}\right)^2 + 
+\left(\frac{a-b}{4}\right)^2 
+\\
+2^{k-4} &= 
+\left(\frac{a}{4}\right)^2
++
+\left(\frac{b}{4}\right)^2
+\\
+&\vdots
+\end{aligned}
+$$
+
+If $k$ is even and $k=2n$, the chain ends 
+with
+$$
+1 = 2^{k-2n} = 
+\left(\frac{a}{2^{n}}\right)^2
++
+\left(\frac{b}{2^{n}}\right)^2
+$$
+The only way to express 1 as the sum of two squares is as $1^{2} + 0^{2}$, so we must have $a = 2^{n}$ and $b = 0$ (WLOG).
+
+If $k$ is odd, say $k=2n+1$, the chain ends
+with
+$$
+1 = 2^{k-2n-1} = 
+\left(\frac{a+b}{2^{n+1}}\right)^2 + 
+\left(\frac{a-b}{2^{n+1}}\right)^2 
+$$
+For this to be a solution we can have
+$$
+\frac{a+b}{2^{n+1}} = 1 \text{ and } 
+\frac{a-b}{2^{n+1}} = 0
+$$
+Which means that $a = b = 2^{n}$.
+
+\end{proof}
+
+
+
+
 
 
 
