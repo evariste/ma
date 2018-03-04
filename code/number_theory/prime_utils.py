@@ -196,6 +196,15 @@ def solve_x2_plus_y2_equals_prime(p):
     """
     Solve for x, y in x^2 + y^2 = p
 
+    See
+    http://www.ams.org/journals/mcom/1972-26-120/S0025-5718-1972-0314745-6/S0025-5718-1972-0314745-6.pdf
+
+    Brillhart, J., 1972.
+    Note on representing a prime as a sum of two squares.
+    Mathematics of Computation,
+    26(120), pp.1011-1013.
+
+
     :param p: Prime number 2, or p == 1 mod 4
     :return: x,y where x^2 + y^2 = p
     """
