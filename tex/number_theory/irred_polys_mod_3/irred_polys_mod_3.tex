@@ -1,0 +1,131 @@
+\documentclass[11pt]{amsart}
+\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   % ... or a4paper or a5paper or ... 
+%\geometry{landscape}                % Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{epstopdf}
+\usepackage{color}
+\usepackage{hyperref}
+
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+
+\title{Brief Article}
+\author{The Author}
+%\date{}                                           % Activate to display a given date or no date
+
+\begin{document}
+%\maketitle
+\section{Irreducible polynomials modulo 3}
+%\subsection{}
+
+Q: What are the irreducible polynomials of degree up to two modulo 3?
+
+
+Polynomials of degree 0 (scalars) are `units' (as $\pm 1$ and $\pm i$ are units in the Gaussian integers, or $\pm 1, \pm \omega, \pm \omega^2$ are units in the Eisenstein integers).
+
+
+Degree 1:
+
+The polynomial $x$ is irreducible - $2 x$ is just a unit multiplied by $x$ so is considered equivalent.
+
+$x + 1$ cannot be obtained from $x$ by multiplication so is a new polynomial. Equivalent multiple of $x + 1$ is $2x + 2$.
+
+$x + 2$ is irreducible, it cannot be obtained from $x$ or from $x+1$ by multiplication. An equivalent polynomial is $2 (x + 2) = 2x + 1$.
+
+Summarise the irreducibility of linear terms so far:
+\begin{center}
+\begin{tabular}{ll}
+polynomial & irreducible $\mod 3$? \\
+\hline
+x & yes \\
+x + 1 & yes \\
+x + 2 & yes \\
+2 x  & no\\
+2 x + 1 & no \\
+2 x + 2 & no
+\end{tabular}
+\end{center}
+
+
+So, only three linear irreducible polynomials mod 3: $x$, $x+1$ and $x+2$.
+
+What about degree two? We can find \emph{reducible} ones by taking products of the three linear terms.
+
+
+
+$$
+\begin{aligned}
+x \cdot x &= x^2  \\
+2 \cdot x \cdot x &= 2 x^2
+\end{aligned}
+$$
+
+\vspace{0.5em}
+
+$$
+\begin{aligned}
+x \cdot (x+1) &= x^2 + x  \\
+2 \cdot x \cdot (x+1) &= 2 x^2 + 2 x
+\end{aligned}
+$$
+
+\vspace{0.5em}
+
+$$
+\begin{aligned}
+x \cdot (x+2) &= x^2 + 2 x  \\
+2 \cdot x \cdot (x+2) &= 2 x^2 +  x
+\end{aligned}
+$$
+
+\vspace{0.5em}
+
+
+$$
+\begin{aligned}
+(x+1) \cdot (x+1) &= x^2 + 2x + 1 \\
+2 \cdot (x+1) \cdot (x+1) &= 2 x^2 + x + 2
+\end{aligned}
+$$
+
+
+\vspace{0.5em}
+
+$$
+\begin{aligned}
+(x+1) \cdot (x+2) &= x^2 + 0x + 2 \\
+2 \cdot (x+1) \cdot (x+2) &= 2 x^2 + 0x + 1
+\end{aligned}
+$$
+
+\vspace{0.5em}
+
+$$
+\begin{aligned}
+(x+2) \cdot (x+2) &= x^2 + x + 1 \\
+2 \cdot (x+2) \cdot (x+2) &= 2 x^2 + 2x + 2
+\end{aligned}
+$$
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}  
