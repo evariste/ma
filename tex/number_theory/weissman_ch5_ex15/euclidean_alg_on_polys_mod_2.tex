@@ -1,0 +1,72 @@
+\documentclass[11pt]{amsart}
+\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   % ... or a4paper or a5paper or ... 
+%\geometry{landscape}                % Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{epstopdf}
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+
+\title{Euclidean algorithm on polynomials mod 2}
+%\author{The Author}
+%\date{}                                           % Activate to display a given date or no date
+\usepackage{cleveref}
+
+\begin{document}
+\maketitle
+%\section{}
+%\subsection{}
+
+
+Q: What is the greatest common divisor of $T^6 + 1$ and $T^{15} + 1$, modulo 2? Use the Euclidean algorithm.
+
+\vspace{2em}
+
+We can carry out long division to obtain
+
+\begin{equation}
+\label{eqn:firstStep}
+(T^{15} + 1) = (T^9 - T^3) \, (T^6 + 1) + (T^3 + 1)
+\end{equation}
+
+This is the first step in the Euclidean Algorithm. 
+
+For the second step, we need to divide $T^6 + 1$ by $T^3 + 1$ and find the remainder.
+Doing this gives:
+$$
+T^6 + 1 = (T^3 - 1) \, (T^3 + 1) - 2
+$$
+
+As we are working modulo 2, this can be re-written as
+$$
+T^6 + 1 = (T^3 - 1) \, (T^3 + 1)
+$$
+which means that, modulo 2, $T^3 + 1$ divides $T^6 + 1$.
+This means, from \cref{eqn:firstStep} that $T^3 + 1$ also divides $T^{15} + 1$.
+
+
+So, we have 
+$$
+\text{gcd}(\; T^{15} + 1 \;, \; T^{6} + 1 \;) = T^{3} + 1 \qquad \mod 2
+$$
+
+
+\vspace{2em}
+
+\emph{N.B.} $T=1$ is a zero of $T^{3} + 1$ so it has a factor $(T-1) \equiv (T+1) \mod 2$. $T^{3} + 1$ can be factored into irreducible polynomials mod 2 as
+$$
+T^{3} + 1 = (T+1) (T^2 + T + 1)
+$$
+
+
+
+
+
+
+
+
+
+
+
+\end{document}  
