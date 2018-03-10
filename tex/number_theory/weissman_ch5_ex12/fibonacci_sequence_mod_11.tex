@@ -1,0 +1,199 @@
+\documentclass[11pt]{amsart}
+\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   % ... or a4paper or a5paper or ... 
+%\geometry{landscape}                % Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{epstopdf}
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+
+\title{Fibonacci numbers mod 11}
+\author{}
+%\date{}                                           % Activate to display a given date or no date
+
+\begin{document}
+\maketitle
+%\section{}
+%\subsection{}
+
+Question 12, Chapter 5, Weissman:
+
+Let $F_n$ denote the Fibonacci sequence 0, 1, 1, 2, 3, $\ldots$ Each term is the sum of the previous two. Write $F_0 = 0$, $F_1 = 1$, and $F_2 = 1$, etc. 
+
+Prove that for $n \ge 1$, $F_n \equiv 4^{n-1} (2^{n} - 1) \mod 11$ 
+
+\vspace{2em}
+
+Solution:
+
+\vspace{1em}
+
+Use induction. For $n=1$, $F_{n} = 1$ and $4^{0}(2^{1}-1)=1 \equiv F_{1} \mod 11$. For $n=2$, $F_{n} = 1$ and $4^{1}(2^{2}-1) = 12 \equiv F_{2} \mod 11$.
+
+
+Assume the relation $F_n \equiv 4^{n-1} (2^{n} - 1) \mod 11$ holds for $n \le k$.
+
+$F_{k+1} = F_{k} + F_{k-1}$ so that $F_{k+1} \equiv F_{k} + F_{k-1} \mod 11$.
+
+Using the induction hypothesis, 
+$$
+F_{k+1} \equiv 
+4^{k-1} (2^{k} - 1) 
++
+4^{k-2} (2^{k-1} - 1) 
+\mod 11
+$$
+so that
+$$
+\begin{aligned}
+F_{k+1} 
+&\equiv 
+4^{k-2} 
+\left(
+4 (2^{k} - 1) 
++
+(2^{k-1} - 1) 
+\right)
+\mod 11
+\\
+&\equiv 
+4^{k-2} 
+\left(
+4 \cdot 2^{k} - 4 
++
+2^{k-1} - 1
+\right)
+\mod 11
+\\
+&\equiv 
+4^{k-2} 
+\left(
+2^{k+2}  
++
+2^{k-1} - 5
+\right)
+\mod 11
+\end{aligned}
+$$
+
+Inside the bracket above, we can use the relation 
+(see separate proof):
+$$
+2^{k-1} + 2^{k} + 2^{k+2} \equiv 0 \mod 11 
+\quad \text{ which gives } \quad
+2^{k-1} +  2^{k+2} \equiv - 2^{k} \mod 11 
+$$
+ 
+
+Substituting into the earlier expression gives
+$$
+\begin{aligned}
+F_{k+1} 
+&\equiv 
+4^{k-2} 
+\left(
+- 2^{k}  - 5
+\right)
+\mod 11
+\\ &\equiv 
+4^{k-2} 
+\left(
+10 \cdot 2^{k}  - 5
+\right)
+\mod 11
+\\ &\equiv 
+5 \cdot 4^{k-2} 
+\left(
+2^{k+1}  - 1
+\right)
+\mod 11
+\end{aligned}
+$$
+
+
+Now use the relation $5 \cdot 4^{k-2} \equiv 4^{k} \mod 11$ (see separate proof) to obtain
+$$
+\begin{aligned}
+F_{k+1} 
+&\equiv 
+4^{k} 
+\left(
+2^{k+1}  - 1
+\right)
+\mod 11
+\end{aligned}
+$$
+which shows that the formula holds for $n=k+1$ and completes the proof by induction.
+
+
+\vspace{2em}
+
+Proof of $2^{k-1} + 2^{k} + 2^{k+2} \equiv 0 \mod 11 $:
+
+$$
+\begin{aligned}
+2^{k-1} + 2^{k} + 2^{k+1} 
+& \equiv 
+2^{k-1} (1 + 2 + 4) \mod 11
+\\
+& \equiv 
+2^{k-1} \cdot 7 \mod 11
+\\
+& \equiv 
+2^{k-1} \cdot (-4) \equiv - 2^{k+1}\mod 11
+\\
+\end{aligned}
+$$
+
+Which gives 
+$$
+2^{k-1} + 2^{k} + 2 \cdot 2^{k+1} \equiv 0 \mod 11
+\quad \text{ i.e. }
+2^{k-1} + 2^{k} + 2^{k+2} \equiv 0 \mod 11
+$$
+
+
+
+\vspace{2em}
+
+Proof of $5 \cdot 4^{k-2} \equiv 4^{k} \mod 11$:
+$$
+\begin{aligned}
+5 \cdot 4^{k-2} 
+& \equiv
+- 6 \cdot 4^{k-2} \mod 11
+\\
+&\equiv
+- 3 \cdot 2 \cdot 4^{k-2} \mod 11
+\\
+&\equiv
+8 \cdot 2 \cdot 4^{k-2} \mod 11
+\\
+&\equiv
+16 \cdot 4^{k-2} \mod 11
+\\
+&\equiv
+4^{k} \mod 11
+\end{aligned}
+$$
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}  
