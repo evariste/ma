@@ -241,6 +241,45 @@ def solve_x2_plus_y2_equals_prime(p):
     return B, R  # B^2 + R^2 == p
 
 
+def power_a_b_mod_n_v2(a, b, n):
+    """
+    Find a^b mod(n)
+
+    Based on Pingala's algorithm. Actually slower than my home made version below
+
+    :param a:
+    :param b:
+    :param n:
+    :return:
+    """
+
+    k = -1
+
+    odds = []
+
+    while b > 1:
+
+        k += 1
+        if (b % 2) == 0:
+            b /= 2
+        else:
+            b -= 1
+            odds.append(k)
+
+    val = a
+
+    for j in range(k+1):
+
+        if (k-j) in odds:
+            val = (a * val) % n
+        else:
+            val = (val * val) % n
+
+    return val
+
+
+
+
 
 def power_a_b_mod_n(a, b, n):
     """
