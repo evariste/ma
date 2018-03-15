@@ -17,7 +17,9 @@
 %\section{}
 %\subsection{}
 
-Question 12, Chapter 5, Weissman:
+\section{Question 12, Chapter 5, Weissman}
+
+My first proof here, discussion from Stack Exchange afterwards.
 
 Let $F_n$ denote the Fibonacci sequence 0, 1, 1, 2, 3, $\ldots$ Each term is the sum of the previous two. Write $F_0 = 0$, $F_1 = 1$, and $F_2 = 1$, etc. 
 
@@ -179,9 +181,29 @@ $$
 $$
 
 
+\section{Discussion on Maths stack exchange}
+
+If we want to solve  any sequence that has the Fibonacci property $F_n + F_{n+1} = F_{n+2}$ with a value of the form $F_{n} = x^{n}$, then the relation translates to $x^{n} + x^{n+1} = x^{n+2}$ so that either $x=0$  or $1 + x = x^{2}$. So, in the non-trivial case, we are looking for solutions of $x^{2} - x - 1 = 0$ \emph{regardless} of the field we are working in.
+
+For the Fibonacci sequence mod 11, we have $x = 8,4$ as solutions of the quadratic $x^{2} - x - 1 = 0$. 
+
+So the sequences $8^{n}$ and $4^{n}$ will satisfy the Fibonacci property. 
+
+E.g.
+$$
+8^{0}, 8^{1}, 8^{2}, \ldots \equiv 1, 8, 9, 6, 4, 10, \ldots
+$$
 
 
+In fact any linear combination of $8^{n}$ and $4^{n}$ will also satisfy the Fib. property. If $u_{n} = a 8^{n} + b 4^{n}$ then 
+$$
+u_{n} + u_{n+1} = a 8^{n} + b 4^{n} + a 8^{n+1} + b 4^{n+1} = a 8^{n+2} +  b 4^{n+2} = u_{n+2}
+$$
 
+Therefore $F_{n}$ mod 11 will  be a linear combination of $8^{n}$ and $4^{n}$. With $F_{n} \equiv  8^{n}a +  4^{n}b$ we need to solve for $a$, $b$. $F_{0} \equiv 0$ gives  $a + b \equiv 0$ and $F_{1} \equiv 1$ gives $8a + 4b \equiv 1 \mod 11$. One possibility for these is $a \equiv 3 $ and  $b \equiv -3 \mod 11$ to give $F_{n} \equiv 3 (8^{n} - 4^{n}) \mod 11$.
+
+
+Nice, I guess, because we can extend to modulo other numbers (where the quadratic is solvable).
 
 
 
