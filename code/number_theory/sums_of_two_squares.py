@@ -3,7 +3,8 @@
 
 import os
 
-from prime_utils import get_non_residue, solve_x2_plus_y2_equals_prime, solve_x2_plus_y2_equals_N, solve_x2_plus_y2_equals_N_brute_force
+from prime_utils import solve_x2_plus_y2_equals_N, solve_x2_plus_y2_equals_N_brute_force
+
 
 import numpy as np
 
@@ -14,7 +15,6 @@ from sympy.ntheory import nextprime
 
 
 def main():
-
 
     N = np.random.randint(1000)
     N = 5 * 5 * 5 * 13 * 7 * 7 * 4
