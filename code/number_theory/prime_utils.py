@@ -380,3 +380,62 @@ def get_non_residue(p):
     # p = 3 mod 4 OR p = 1 mod 24
     return search_for_non_residue(p)
 
+
+def isPrime_MillerRabin(n):
+    if n < 1000:
+        return isPrime_Eratosthenes(n)
+
+    if (n > 4759123141):
+        print ('Home made isPrime_MillerRabin: number exceeds maximum '
+               'testable with this version of algorithm (4759123141)')
+        print ('result is not definite')
+        print('Use sympy isprime for definite results up to 10^16')
+
+
+
+
+    if (not n & 1): # even.
+        return False
+
+    s = 0
+    d = n - 1
+
+    while (d % 2 == 0):
+        s = s + 1
+        d = d / 2
+
+    a = [2, 7, 61]
+
+    for i in range(3):
+        aa = power_a_b_mod_n(a[i], d, n)
+
+        isComposite = (aa != 1) and (aa != n-1)
+
+        if not isComposite:
+            continue
+
+        for r in range(1,s):
+            isComposite = isComposite and ( power_a_b_mod_n(a[i], d*(2**r), n)  !=  (n-1) )
+
+        if isComposite:
+            return False
+
+    return True
+
+
+def isPrime_Eratosthenes(n):
+    if (n < 2):
+        return False
+    elif (n == 2):
+        return True
+    elif (not n & 1):  # n is even
+        return False
+    else:
+        # Basic, test over possible odd divisors up to the approx square
+        # root of n
+        seq = [x for x in range(3, n / 2, 2) if x * x < n + 1]
+        for d in seq:
+            if n % d == 0:
+                return False
+
+    return True
