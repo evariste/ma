@@ -333,7 +333,7 @@ def power_a_b_mod_n(a, b, n):
         i += 1
 
     if (i == 2 * n) & (not cycleFound):
-        print "Error : power_a_b_mod_n : no cycle found"
+        print("Error : power_a_b_mod_n : no cycle found")
         exit()
 
     ix = ix_start + (b - 1 - ix_start) % cycle_length
